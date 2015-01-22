@@ -291,8 +291,8 @@ if (mysql_num_rows($result) == 0)
         $row1 = sql_fetch($sql1);
 
         // 1.03.02
-        $row1['od_addr'] = '('.$row1['od_zip1'].'-'.$row1['od_zip2'].') '.print_address($row1['od_addr1'], $row1['od_addr2'], $row1['od_addr3'], $row1['od_addr_jibeon']);
-        $row1['od_b_addr'] = '('.$row1['od_b_zip1'].'-'.$row1['od_b_zip2'].') '.print_address($row1['od_b_addr1'], $row1['od_b_addr2'], $row1['od_b_addr3'], $row1['od_b_addr_jibeon']);
+        $row1['od_addr'] = '('.$row1['od_zip'].') '.print_address($row1['od_addr1'], $row1['od_addr2'], $row1['od_addr3'], $row1['od_addr_jibeon']);
+        $row1['od_b_addr'] = '('.$row1['od_b_zip'].') '.print_address($row1['od_b_addr1'], $row1['od_b_addr2'], $row1['od_b_addr3'], $row1['od_b_addr_jibeon']);
 
         $row1['od_addr'] = ($row1['od_addr']) ? $row1['od_addr'] : '입력안함';
         $row1['od_tel'] = ($row1['od_tel']) ? $row1['od_tel'] : '입력안함';

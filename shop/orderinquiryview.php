@@ -477,7 +477,7 @@ if($od['od_pg'] == 'lg') {
                 </tr>
                 <tr>
                     <th scope="row">주 소</th>
-                    <td><?php echo get_text(sprintf("(%s-%s)", $od['od_zip1'], $od['od_zip2']).' '.print_address($od['od_addr1'], $od['od_addr2'], $od['od_addr3'], $od['od_addr_jibeon'])); ?></td>
+                    <td><?php echo get_text(sprintf("(%s)", $od['od_zip']).' '.print_address($od['od_addr1'], $od['od_addr2'], $od['od_addr3'], $od['od_addr_jibeon'])); ?></td>
                 </tr>
                 <tr>
                     <th scope="row">E-mail</th>

@@ -148,7 +148,7 @@ $ft_a_st = 'display:block;padding:30px 0;background:#484848;color:#fff;text-alig
         </tr>
         <tr>
             <th scope="row" style="<?php echo $th_st; ?>">주소</th>
-            <td style="<?php echo $td_st; ?>"><?php echo sprintf("(%s-%s)", $od_zip1, $od_zip2).' '.print_address($od_addr1, $od_addr2, $od_addr3, $od_addr_jibeon); ?></td>
+            <td style="<?php echo $td_st; ?>"><?php echo sprintf("(%s)", $od_zip).' '.print_address($od_addr1, $od_addr2, $od_addr3, $od_addr_jibeon); ?></td>
         </tr>
 
         <?php if ($od_hope_date) { ?>
