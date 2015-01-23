@@ -808,18 +808,24 @@ add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
                     <td><input type="text" name="od_hp" value="<?php echo $od['od_hp']; ?>" id="od_hp" class="frm_input"></td>
                 </tr>
                 <tr>
-                    <th scope="row"><span class="sound_only">주문하시는 분 </span>주소</th>
+                    <th scope="row"><span class="sound_only">주문하시는 분 </span>POSTCODE</th>
                     <td>
                         <label for="od_zip" class="sound_only">POSTCODE</label>
                         <input type="text" name="od_zip" value="<?php echo $od['od_zip']; ?>" id="od_zip" required class="frm_input required" size="4"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><span class="sound_only">주문하시는 분 </span>ADDRESS</th>
+                    <td>
                         <input type="text" name="od_addr1" value="<?php echo $od['od_addr1']; ?>" id="od_addr1" required class="frm_input required" size="35">
                         <label for="od_addr1">기본주소</label><br>
-                        <input type="text" name="od_addr2" value="<?php echo $od['od_addr2']; ?>" id="od_addr2" class="frm_input" size="35">
-                        <label for="od_addr2">상세주소</label>
-                        <br>
-                        <input type="text" name="od_addr3" value="<?php echo $od['od_addr3']; ?>" id="od_addr3" class="frm_input" size="35">
-                        <label for="od_addr3">참고항목</label>
-                        <input type="hidden" name="od_addr_jibeon" value="<?php echo $od['od_addr_jibeon']; ?>"><br>
+<!--                        <input type="text" name="od_addr2" value="--><?php //echo $od['od_addr2']; ?><!--" id="od_addr2" class="frm_input" size="35">-->
+<!--                        <label for="od_addr2">상세주소</label>-->
+<!--                        <br>-->
+<!--                        <input type="text" name="od_addr3" value="--><?php //echo $od['od_addr3']; ?><!--" id="od_addr3" class="frm_input" size="35">-->
+<!--                        <label for="od_addr3">참고항목</label>-->
+<!--                        <input type="hidden" name="od_addr_jibeon" value="--><?php //echo $od['od_addr_jibeon']; ?><!--"><br>-->
+                    </td>
                 </tr>
                 <tr>
                     <th scope="row"><label for="od_email"><span class="sound_only">주문하신 분 </span>E-mail</label></th>
@@ -858,21 +864,22 @@ add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
                     <td><input type="text" name="od_b_hp" value="<?php echo $od['od_b_hp']; ?>" id="od_b_hp" class="frm_input required"></td>
                 </tr>
                 <tr>
-                    <th scope="row"><span class="sound_only">받으시는 분 </span>주소</th>
+                    <th scope="row"><span class="sound_only">받으시는 분 </span>POSTCODE</th>
                     <td>
-                        <label for="od_b_zip1" class="sound_only">우편번호 앞자리</label>
-                        <input type="text" name="od_b_zip1" value="<?php echo $od['od_b_zip1']; ?>" id="od_b_zip1" required class="frm_input required" size="4">
-                        -
-                        <label for="od_b_zip2" class="sound_only">우편번호 뒷자리</label>
-                        <input type="text" name="od_b_zip2" value="<?php echo $od['od_b_zip2']; ?>" id="od_b_zip2" required class="frm_input required" size="4">
-                        <button type="button" class="btn_frmline" onclick="win_zip('frmorderform3', 'od_b_zip1', 'od_b_zip2', 'od_b_addr1', 'od_b_addr2', 'od_b_addr3', 'od_b_addr_jibeon');">주소 검색</button><br>
+                        <label for="od_b_zip" class="sound_only">POSTCODE</label>
+                        <input type="text" name="od_b_zip" value="<?php echo $od['od_b_zip']; ?>" id="od_b_zip" required class="frm_input required" size="4"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><span class="sound_only">받으시는 분 </span>ADDRESS</th>
+                    <td>
                         <input type="text" name="od_b_addr1" value="<?php echo $od['od_b_addr1']; ?>" id="od_b_addr1" required class="frm_input required" size="35">
                         <label for="od_b_addr1">기본주소</label>
-                        <input type="text" name="od_b_addr2" value="<?php echo $od['od_b_addr2']; ?>" id="od_b_addr2" class="frm_input" size="35">
-                        <label for="od_b_addr2">상세주소</label>
-                        <input type="text" name="od_b_addr3" value="<?php echo $od['od_b_addr3']; ?>" id="od_b_addr3" class="frm_input" size="35">
-                        <label for="od_b_addr3">참고항목</label>
-                        <input type="hidden" name="od_b_addr_jibeon" value="<?php echo $od['od_b_addr_jibeon']; ?>"><br>
+<!--                        <input type="text" name="od_b_addr2" value="--><?php //echo $od['od_b_addr2']; ?><!--" id="od_b_addr2" class="frm_input" size="35">-->
+<!--                        <label for="od_b_addr2">상세주소</label>-->
+<!--                        <input type="text" name="od_b_addr3" value="--><?php //echo $od['od_b_addr3']; ?><!--" id="od_b_addr3" class="frm_input" size="35">-->
+<!--                        <label for="od_b_addr3">참고항목</label>-->
+<!--                        <input type="hidden" name="od_b_addr_jibeon" value="--><?php //echo $od['od_b_addr_jibeon']; ?><!--"><br>-->
                     </td>
                 </tr>
 

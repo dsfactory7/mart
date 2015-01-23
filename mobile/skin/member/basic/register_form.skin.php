@@ -137,20 +137,28 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
         <?php if ($config['cf_use_addr']) { ?>
         <tr>
             <th scope="row">
-                주소
+                POSTCODE
                 <?php if ($config['cf_req_addr']) { ?><strong class="sound_only">필수</strong><?php } ?>
             </th>
             <td>
                 <label for="reg_mb_zip" class="sound_only">POSTCODE<?php echo $config['cf_req_addr']?'<strong class="sound_only"> 필수</strong>':''; ?></label>
                 <input type="text" name="mb_zip" value="<?php echo $member['mb_zip'] ?>" id="reg_mb_zip" <?php echo $config['cf_req_addr']?"required":""; ?> class="frm_input <?php echo $config['cf_req_addr']?"required":""; ?>" size="4" maxlength="4"><br>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                ADDRESS
+                <?php if ($config['cf_req_addr']) { ?><strong class="sound_only">필수</strong><?php } ?>
+            </th>
+            <td>
                 <label for="reg_mb_addr1" class="sound_only">주소<?php echo $config['cf_req_addr']?'<strong class="sound_only"> 필수</strong>':''; ?></label>
                 <input type="text" name="mb_addr1" value="<?php echo $member['mb_addr1'] ?>" id="reg_mb_addr1" <?php echo $config['cf_req_addr']?"required":""; ?> class="frm_input frm_address <?php echo $config['cf_req_addr']?"required":""; ?>" size="50"><br>
-                <label for="reg_mb_addr2" class="sound_only">상세주소</label>
-                <input type="text" name="mb_addr2" value="<?php echo $member['mb_addr2'] ?>" id="reg_mb_addr2" class="frm_input frm_address" size="50">
-                <br>
-                <label for="reg_mb_addr3" class="sound_only">참고항목</label>
-                <input type="text" name="mb_addr3" value="<?php echo $member['mb_addr3'] ?>" id="reg_mb_addr3" class="frm_input frm_address" size="50" readonly="readonly">
-                <input type="hidden" name="mb_addr_jibeon" value="<?php echo $member['mb_addr_jibeon']; ?>">
+<!--                <label for="reg_mb_addr2" class="sound_only">상세주소</label>-->
+<!--                <input type="text" name="mb_addr2" value="--><?php //echo $member['mb_addr2'] ?><!--" id="reg_mb_addr2" class="frm_input frm_address" size="50">-->
+<!--                <br>-->
+<!--                <label for="reg_mb_addr3" class="sound_only">참고항목</label>-->
+<!--                <input type="text" name="mb_addr3" value="--><?php //echo $member['mb_addr3'] ?><!--" id="reg_mb_addr3" class="frm_input frm_address" size="50" readonly="readonly">-->
+<!--                <input type="hidden" name="mb_addr_jibeon" value="--><?php //echo $member['mb_addr_jibeon']; ?><!--">-->
             </td>
         </tr>
         <?php } ?>

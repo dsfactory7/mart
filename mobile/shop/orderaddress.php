@@ -16,7 +16,7 @@ $order_action_url = G5_HTTPS_SHOP_URL.'/orderaddressupdate.php';
             <?php
             $sep = chr(30);
             for($i=0; $row=sql_fetch_array($result); $i++) {
-                $addr = $row['ad_name'].$sep.$row['ad_tel'].$sep.$row['ad_hp'].$sep.$row['ad_zip1'].$sep.$row['ad_zip2'].$sep.$row['ad_addr1'].$sep.$row['ad_addr2'].$sep.$row['ad_addr3'].$sep.$row['ad_jibeon'].$sep.$row['ad_subject'];
+                $addr = $row['ad_name'].$sep.$row['ad_tel'].$sep.$row['ad_hp'].$sep.$row['ad_zip'].$sep.$row['ad_addr1'].$sep.$row['ad_addr2'].$sep.$row['ad_addr3'].$sep.$row['ad_jibeon'].$sep.$row['ad_subject'];
             ?>
             <li>
                 <div class="addr_chk" rowspan="3">
@@ -65,19 +65,17 @@ $(function() {
         f.od_b_name.value        = addr[0];
         f.od_b_tel.value         = addr[1];
         f.od_b_hp.value          = addr[2];
-        f.od_b_zip1.value        = addr[3];
-        f.od_b_zip2.value        = addr[4];
-        f.od_b_addr1.value       = addr[5];
-        f.od_b_addr2.value       = addr[6];
-        f.od_b_addr3.value       = addr[7];
-        f.od_b_addr_jibeon.value = addr[8];
-        f.ad_subject.value       = addr[9];
+        f.od_b_zip.value         = addr[3];
+        f.od_b_addr1.value       = addr[4];
+        f.od_b_addr2.value       = addr[5];
+        f.od_b_addr3.value       = addr[6];
+        f.od_b_addr_jibeon.value = addr[7];
+        f.ad_subject.value       = addr[8];
 
-        var zip1 = addr[3].replace(/[^0-9]/g, "");
-        var zip2 = addr[4].replace(/[^0-9]/g, "");
+        var zip = addr[3].replace(/[^0-9]/g, "");
 
-        if(zip1 != "" && zip2 != "") {
-            var code = String(zip1) + String(zip2);
+        if(zip != "") {
+            var code = String(zip);
 
             if(window.opener.zipcode != code) {
                 window.opener.zipcode = code;

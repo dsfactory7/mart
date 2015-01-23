@@ -220,9 +220,8 @@ if ((int)($send_cost - $tot_sc_cp_price) !== (int)($i_send_cost - $i_send_coupon
 }
 
 // 추가배송비가 상이함
-$od_b_zip1 = preg_replace('/[^0-9]/', '', $od_b_zip1);
-$od_b_zip2 = preg_replace('/[^0-9]/', '', $od_b_zip2);
-$zipcode = $od_b_zip1 . $od_b_zip2;
+$od_b_zip = preg_replace('/[^0-9]/', '', $od_b_zip);
+$zipcode = $od_b_zip;
 $sql = " select sc_id, sc_price from {$g5['g5_shop_sendcost_table']} where sc_zip1 <= '$zipcode' and sc_zip2 >= '$zipcode' ";
 $tmp = sql_fetch($sql);
 if(!$tmp['sc_id'])
@@ -444,8 +443,7 @@ $sql = " insert {$g5['g5_shop_order_table']}
                 od_b_name         = '$od_b_name',
                 od_b_tel          = '$od_b_tel',
                 od_b_hp           = '$od_b_hp',
-                od_b_zip1         = '$od_b_zip1',
-                od_b_zip2         = '$od_b_zip2',
+                od_b_zip          = '$od_b_zip',
                 od_b_addr1        = '$od_b_addr1',
                 od_b_addr2        = '$od_b_addr2',
                 od_b_addr3        = '$od_b_addr3',
@@ -693,8 +691,7 @@ if($is_member) {
                   and ad_name = '$od_b_name'
                   and ad_tel = '$od_b_tel'
                   and ad_hp = '$od_b_hp'
-                  and ad_zip1 = '$od_b_zip1'
-                  and ad_zip2 = '$od_b_zip2'
+                  and ad_zip = '$od_b_zip'
                   and ad_addr1 = '$od_b_addr1'
                   and ad_addr2 = '$od_b_addr2'
                   and ad_addr3 = '$od_b_addr3' ";
@@ -723,8 +720,7 @@ if($is_member) {
                         ad_name     = '$od_b_name',
                         ad_tel      = '$od_b_tel',
                         ad_hp       = '$od_b_hp',
-                        ad_zip1     = '$od_b_zip1',
-                        ad_zip2     = '$od_b_zip2',
+                        ad_zip      = '$od_b_zip',
                         ad_addr1    = '$od_b_addr1',
                         ad_addr2    = '$od_b_addr2',
                         ad_addr3    = '$od_b_addr3',
