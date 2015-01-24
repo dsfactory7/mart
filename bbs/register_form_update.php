@@ -134,7 +134,7 @@ $mb_addr_jibeon = preg_match("/^(N|R)$/", $mb_addr_jibeon) ? $mb_addr_jibeon : '
 //===============================================================
 //  본인확인
 //---------------------------------------------------------------
-$mb_hp = hyphen_hp_number($mb_hp);
+//$mb_hp = hyphen_hp_number($mb_hp);
 if($config['cf_cert_use'] && $_SESSION['ss_cert_type'] && $_SESSION['ss_cert_dupinfo']) {
     // 중복체크
     $sql = " select mb_id from {$g5['member_table']} where mb_id <> '{$member['mb_id']}' and mb_dupinfo = '{$_SESSION['ss_cert_dupinfo']}' ";
