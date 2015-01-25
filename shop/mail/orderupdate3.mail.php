@@ -61,10 +61,10 @@ $ft_a_st = 'display:block;padding:30px 0;background:#484848;color:#fff;text-alig
             <th scope="row" style="<?php echo $th_st; ?>">이름</th>
             <td style="<?php echo $td_st; ?>"><?php echo $od_name; ?></td>
         </tr>
-        <tr>
-            <th scope="row" style="<?php echo $th_st; ?>">전화번호</th>
-            <td style="<?php echo $td_st; ?>"><?php echo $od_tel; ?></td>
-        </tr>
+<!--        <tr>-->
+<!--            <th scope="row" style="--><?php //echo $th_st; ?><!--">전화번호</th>-->
+<!--            <td style="--><?php //echo $td_st; ?><!--">--><?php //echo $od_tel; ?><!--</td>-->
+<!--        </tr>-->
         <tr>
             <th scope="row" style="<?php echo $th_st; ?>">핸드폰</th>
             <td style="<?php echo $td_st; ?>"><?php echo $od_hp; ?></td>
@@ -95,10 +95,10 @@ $ft_a_st = 'display:block;padding:30px 0;background:#484848;color:#fff;text-alig
             <th scope="row" style="<?php echo $th_st; ?>">이 름</th>
             <td style="<?php echo $td_st; ?>"><?php echo $od_b_name; ?></td>
         </tr>
-        <tr>
-            <th scope="row" style="<?php echo $th_st; ?>">전화번호</th>
-            <td style="<?php echo $td_st; ?>"><?php echo $od_b_tel; ?></td>
-        </tr>
+<!--        <tr>-->
+<!--            <th scope="row" style="--><?php //echo $th_st; ?><!--">전화번호</th>-->
+<!--            <td style="--><?php //echo $td_st; ?><!--">--><?php //echo $od_b_tel; ?><!--</td>-->
+<!--        </tr>-->
         <tr>
             <th scope="row" style="<?php echo $th_st; ?>">핸드폰</th>
             <td style="<?php echo $td_st; ?>"><?php echo $od_b_hp; ?></td>

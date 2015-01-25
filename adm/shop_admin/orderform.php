@@ -799,10 +799,10 @@ add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
                     <th scope="row"><label for="od_name"><span class="sound_only">주문하신 분 </span>이름</label></th>
                     <td><input type="text" name="od_name" value="<?php echo $od['od_name']; ?>" id="od_name" required class="frm_input required"></td>
                 </tr>
-                <tr>
-                    <th scope="row"><label for="od_tel"><span class="sound_only">주문하신 분 </span>전화번호</label></th>
-                    <td><input type="text" name="od_tel" value="<?php echo $od['od_tel']; ?>" id="od_tel" required class="frm_input required"></td>
-                </tr>
+<!--                <tr>-->
+<!--                    <th scope="row"><label for="od_tel"><span class="sound_only">주문하신 분 </span>전화번호</label></th>-->
+<!--                    <td><input type="text" name="od_tel" value="--><?php //echo $od['od_tel']; ?><!--" id="od_tel" required class="frm_input required"></td>-->
+<!--                </tr>-->
                 <tr>
                     <th scope="row"><label for="od_hp"><span class="sound_only">주문하신 분 </span>핸드폰</label></th>
                     <td><input type="text" name="od_hp" value="<?php echo $od['od_hp']; ?>" id="od_hp" class="frm_input"></td>
@@ -855,10 +855,10 @@ add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
                     <th scope="row"><label for="od_b_name"><span class="sound_only">받으시는 분 </span>이름</label></th>
                     <td><input type="text" name="od_b_name" value="<?php echo $od['od_b_name']; ?>" id="od_b_name" required class="frm_input required"></td>
                 </tr>
-                <tr>
-                    <th scope="row"><label for="od_b_tel"><span class="sound_only">받으시는 분 </span>전화번호</label></th>
-                    <td><input type="text" name="od_b_tel" value="<?php echo $od['od_b_tel']; ?>" id="od_b_tel" required class="frm_input required"></td>
-                </tr>
+<!--                <tr>-->
+<!--                    <th scope="row"><label for="od_b_tel"><span class="sound_only">받으시는 분 </span>전화번호</label></th>-->
+<!--                    <td><input type="text" name="od_b_tel" value="--><?php //echo $od['od_b_tel']; ?><!--" id="od_b_tel" required class="frm_input required"></td>-->
+<!--                </tr>-->
                 <tr>
                     <th scope="row"><label for="od_b_hp"><span class="sound_only">받으시는 분 </span>핸드폰</label></th>
                     <td><input type="text" name="od_b_hp" value="<?php echo $od['od_b_hp']; ?>" id="od_b_hp" class="frm_input required"></td>
