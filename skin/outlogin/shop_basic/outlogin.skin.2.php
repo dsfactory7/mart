@@ -9,7 +9,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$outlogin_skin_url.'/style.css">'
 <section id="ol_after" class="ol">
     <header id="ol_after_hd">
         <h2>나의 회원정보</h2>
-        <strong><?php echo $nick; ?>님</strong>
+        <strong><?php echo $name; ?>님</strong>
         <?php if ($is_admin == 'super' || $is_auth) { ?><a href="<?php echo G5_ADMIN_URL; ?>/shop_admin" class="btn_admin">관리자 모드</a><?php } ?>
     </header>
     <ul id="ol_after_private">

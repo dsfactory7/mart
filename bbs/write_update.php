@@ -181,7 +181,8 @@ if ($w == '' || $w == 'r') {
 
     if ($member['mb_id']) {
         $mb_id = $member['mb_id'];
-        $wr_name = addslashes(clean_xss_tags($board['bo_use_name'] ? $member['mb_name'] : $member['mb_nick']));
+//        $wr_name = addslashes(clean_xss_tags($board['bo_use_name'] ? $member['mb_name'] : $member['mb_nick']));
+        $wr_name = addslashes(clean_xss_tags($member['mb_name']));
         $wr_password = $member['mb_password'];
         $wr_email = addslashes($member['mb_email']);
         $wr_homepage = addslashes(clean_xss_tags($member['mb_homepage']));
@@ -301,7 +302,8 @@ if ($w == '' || $w == 'r') {
         // 자신의 글이라면
         if ($member['mb_id'] == $wr['mb_id']) {
             $mb_id = $member['mb_id'];
-            $wr_name = addslashes(clean_xss_tags($board['bo_use_name'] ? $member['mb_name'] : $member['mb_nick']));
+//            $wr_name = addslashes(clean_xss_tags($board['bo_use_name'] ? $member['mb_name'] : $member['mb_nick']));
+            $wr_name = addslashes(clean_xss_tags($member['mb_name']));
             $wr_email = addslashes($member['mb_email']);
             $wr_homepage = addslashes(clean_xss_tags($member['mb_homepage']));
         } else {

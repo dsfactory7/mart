@@ -73,10 +73,10 @@ if ($w == '' || $w == 'u') {
         alert('비밀번호가 일치하지 않습니다.');
 
     if ($msg = empty_mb_name($mb_id))       alert($msg, "", true, true);
-    if ($msg = empty_mb_nick($mb_nick))     alert($msg, "", true, true);
+//    if ($msg = empty_mb_nick($mb_nick))     alert($msg, "", true, true);
     if ($msg = empty_mb_email($mb_email))   alert($msg, "", true, true);
     if ($msg = reserve_mb_id($mb_id))       alert($msg, "", true, true);
-    if ($msg = reserve_mb_nick($mb_nick))   alert($msg, "", true, true);
+//    if ($msg = reserve_mb_nick($mb_nick))   alert($msg, "", true, true);
     // 이름에 한글명 체크를 하지 않는다.
     //if ($msg = valid_mb_name($mb_name))     alert($msg, "", true, true);
     if ($msg = valid_mb_nick($mb_nick))     alert($msg, "", true, true);

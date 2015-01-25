@@ -9,6 +9,9 @@ function outlogin($skin_dir='basic')
     if (array_key_exists('mb_nick', $member)) {
         $nick  = cut_str($member['mb_nick'], $config['cf_cut_name']);
     }
+    if (array_key_exists('mb_name', $member)) {
+        $name  = cut_str($member['mb_name'], $config['cf_cut_name']);
+    }
     if (array_key_exists('mb_point', $member)) {
         $point = number_format($member['mb_point']);
     }

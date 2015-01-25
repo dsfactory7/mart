@@ -84,20 +84,20 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
                 <?php } ?>
             </td>
         </tr>
-        <?php if ($req_nick) {  ?>
-        <tr>
-            <th scope="row"><label for="reg_mb_nick">닉네임<strong class="sound_only">필수</strong></label></th>
-            <td>
-                <span class="frm_info">
-                    공백없이 한글,영문,숫자만 입력 가능 (한글2자, 영문4자 이상)<br>
-                    닉네임을 바꾸시면 앞으로 <?php echo (int)$config['cf_nick_modify'] ?>일 이내에는 변경 할 수 없습니다.
-                </span>
-                <input type="hidden" name="mb_nick_default" value="<?php echo isset($member['mb_nick'])?$member['mb_nick']:''; ?>">
-                <input type="text" name="mb_nick" value="<?php echo isset($member['mb_nick'])?$member['mb_nick']:''; ?>" id="reg_mb_nick" required class="frm_input required nospace" size="10" maxlength="20">
-                <span id="msg_mb_nick"></span>
-            </td>
-        </tr>
-        <?php }  ?>
+<!--        --><?php //if ($req_nick) {  ?>
+<!--        <tr>-->
+<!--            <th scope="row"><label for="reg_mb_nick">닉네임<strong class="sound_only">필수</strong></label></th>-->
+<!--            <td>-->
+<!--                <span class="frm_info">-->
+<!--                    공백없이 한글,영문,숫자만 입력 가능 (한글2자, 영문4자 이상)<br>-->
+<!--                    닉네임을 바꾸시면 앞으로 --><?php //echo (int)$config['cf_nick_modify'] ?><!--일 이내에는 변경 할 수 없습니다.-->
+<!--                </span>-->
+<!--                <input type="hidden" name="mb_nick_default" value="--><?php //echo isset($member['mb_nick'])?$member['mb_nick']:''; ?><!--">-->
+<!--                <input type="text" name="mb_nick" value="--><?php //echo isset($member['mb_nick'])?$member['mb_nick']:''; ?><!--" id="reg_mb_nick" required class="frm_input required nospace" size="10" maxlength="20">-->
+<!--                <span id="msg_mb_nick"></span>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        --><?php //}  ?>
 
         <tr>
             <th scope="row"><label for="reg_mb_email">E-mail<strong class="sound_only">필수</strong></label></th>
@@ -386,14 +386,14 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
         <?php } ?>
 
         // 닉네임 검사
-        if ((f.w.value == "") || (f.w.value == "u" && f.mb_nick.defaultValue != f.mb_nick.value)) {
-            var msg = reg_mb_nick_check();
-            if (msg) {
-                alert(msg);
-                f.reg_mb_nick.select();
-                return false;
-            }
-        }
+//        if ((f.w.value == "") || (f.w.value == "u" && f.mb_nick.defaultValue != f.mb_nick.value)) {
+//            var msg = reg_mb_nick_check();
+//            if (msg) {
+//                alert(msg);
+//                f.reg_mb_nick.select();
+//                return false;
+//            }
+//        }
 
         // E-mail 검사
         if ((f.w.value == "") || (f.w.value == "u" && f.mb_email.defaultValue != f.mb_email.value)) {

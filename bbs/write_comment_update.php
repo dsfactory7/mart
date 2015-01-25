@@ -52,7 +52,8 @@ if ($is_member)
 {
     $mb_id = $member['mb_id'];
     // 4.00.13 - 실명 사용일때 댓글에 닉네임으로 입력되던 오류를 수정
-    $wr_name = addslashes(clean_xss_tags($board['bo_use_name'] ? $member['mb_name'] : $member['mb_nick']));
+//    $wr_name = addslashes(clean_xss_tags($board['bo_use_name'] ? $member['mb_name'] : $member['mb_nick']));
+    $wr_name = addslashes(clean_xss_tags($member['mb_name']));
     $wr_password = $member['mb_password'];
     $wr_email = addslashes($member['mb_email']);
     $wr_homepage = addslashes(clean_xss_tags($member['mb_homepage']));
