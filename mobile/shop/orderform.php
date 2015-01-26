@@ -301,7 +301,7 @@ require_once(G5_MSHOP_PATH.'/'.$default['de_pg_service'].'/orderform.1.php');
 <!--            </tr>-->
             <tr>
                 <th scope="row"><label for="od_hp">핸드폰</label></th>
-                <td><input type="text" name="od_hp" value="<?php echo $member['mb_hp']; ?>" id="od_hp" class="frm_input" maxlength="20"></td>
+                <td><input type="text" name="od_hp" value="<?php echo $member['mb_hp']; ?>" id="od_hp" required class="frm_input required" maxlength="20"></td>
             </tr>
             <tr>
                 <th scope="row">POSTCODE</th>
@@ -429,7 +429,7 @@ require_once(G5_MSHOP_PATH.'/'.$default['de_pg_service'].'/orderform.1.php');
 <!--            </tr>-->
             <tr>
                 <th scope="row"><label for="od_b_hp">핸드폰</label></th>
-                <td><input type="text" name="od_b_hp" id="od_b_hp" class="frm_input" maxlength="20"></td>
+                <td><input type="text" name="od_b_hp" id="od_b_hp" required class="frm_input" maxlength="20"></td>
             </tr>
             <tr>
                 <th scope="row">POSTCODE</th>
@@ -448,6 +448,10 @@ require_once(G5_MSHOP_PATH.'/'.$default['de_pg_service'].'/orderform.1.php');
             <tr>
                 <th scope="row"><label for="od_memo">전하실 말씀</label></th>
                 <td><textarea name="od_memo" id="od_memo"></textarea></td>
+            </tr>
+            <tr>
+              <th scope="row"><label for="od_hope_date">Delivery Date</label></th>
+              <td><input type="text" name="od_b_hope_date" id="od_b_hope_date" required class="frm_input" size="30" readonly="readonly"></td>
             </tr>
             </tbody>
             </table>
