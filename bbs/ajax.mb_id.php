@@ -4,9 +4,11 @@ include_once(G5_LIB_PATH.'/register.lib.php');
 
 $mb_id = trim($_POST['reg_mb_id']);
 
-if ($msg = empty_mb_id($mb_id))     die($msg);
-if ($msg = valid_mb_id($mb_id))     die($msg);
-if ($msg = count_mb_id($mb_id))     die($msg);
-if ($msg = exist_mb_id($mb_id))     die($msg);
-if ($msg = reserve_mb_id($mb_id))   die($msg);
+if ($msg = empty_mb_email($mb_id))    die($msg);
+//if ($msg = valid_mb_id($mb_id))     die($msg);
+if ($msg = valid_mb_email($mb_id))    die($msg);
+//if ($msg = count_mb_id($mb_id))     die($msg);
+if ($msg = prohibit_mb_email($mb_id)) die($msg);
+if ($msg = exist_mb_id($mb_id))       die($msg);
+//if ($msg = reserve_mb_id($mb_id))   die($msg);
 ?>

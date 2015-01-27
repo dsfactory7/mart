@@ -34,7 +34,8 @@ $mb_password    = trim($_POST['mb_password']);
 $mb_password_re = trim($_POST['mb_password_re']);
 $mb_name        = trim($_POST['mb_name']);
 $mb_nick        = trim($_POST['mb_nick']);
-$mb_email       = trim($_POST['mb_email']);
+//$mb_email       = trim($_POST['mb_email']);
+$mb_email       = trim($_POST['mb_id']);
 $mb_sex         = isset($_POST['mb_sex'])           ? trim($_POST['mb_sex'])         : "";
 $mb_birth       = isset($_POST['mb_birth'])         ? trim($_POST['mb_birth'])       : "";
 $mb_homepage    = isset($_POST['mb_homepage'])      ? trim($_POST['mb_homepage'])    : "";
@@ -64,8 +65,9 @@ $mb_10          = isset($_POST['mb_10'])            ? trim($_POST['mb_10'])     
 if ($w == '' || $w == 'u') {
 
     if ($msg = empty_mb_id($mb_id))         alert($msg, "", true, true); // alert($msg, $url, $error, $post);
-    if ($msg = valid_mb_id($mb_id))         alert($msg, "", true, true);
-    if ($msg = count_mb_id($mb_id))         alert($msg, "", true, true);
+    if ($msg = valid_mb_email($mb_id))      alert($msg, "", true, true);
+    if ($msg = prohibit_mb_email($mb_id))   alert($msg, "", true, true);
+//    if ($msg = count_mb_id($mb_id))         alert($msg, "", true, true);
 
     if ($w == '' && !$mb_password)
         alert('비밀번호가 넘어오지 않았습니다.');
@@ -75,7 +77,7 @@ if ($w == '' || $w == 'u') {
     if ($msg = empty_mb_name($mb_id))       alert($msg, "", true, true);
 //    if ($msg = empty_mb_nick($mb_nick))     alert($msg, "", true, true);
     if ($msg = empty_mb_email($mb_email))   alert($msg, "", true, true);
-    if ($msg = reserve_mb_id($mb_id))       alert($msg, "", true, true);
+//    if ($msg = reserve_mb_id($mb_id))       alert($msg, "", true, true);
 //    if ($msg = reserve_mb_nick($mb_nick))   alert($msg, "", true, true);
     // 이름에 한글명 체크를 하지 않는다.
     //if ($msg = valid_mb_name($mb_name))     alert($msg, "", true, true);
@@ -114,7 +116,7 @@ if ($w == '' || $w == 'u') {
         $old_email = $member['mb_email'];
     }
 
-    if ($msg = exist_mb_nick($mb_nick, $mb_id))     alert($msg, "", true, true);
+//    if ($msg = exist_mb_nick($mb_nick, $mb_id))     alert($msg, "", true, true);
     if ($msg = exist_mb_email($mb_email, $mb_id))   alert($msg, "", true, true);
 }
 
@@ -290,6 +292,7 @@ if ($w == '') {
 
     $sql = " update {$g5['member_table']}
                 set mb_nick = '{$mb_nick}',
+                    mb_name = '{$mb_name}',
                     mb_mailling = '{$mb_mailling}',
                     mb_sms = '{$mb_sms}',
                     mb_open = '{$mb_open}',
