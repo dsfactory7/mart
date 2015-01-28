@@ -127,38 +127,38 @@ $ft_a_st = 'display:block;padding:30px 0;background:#484848;color:#fff;text-alig
         </tbody>
         </table>
 
-        <table style="<?php echo $cont_st; ?>">
-        <caption style="<?php echo $caption_st; ?>">주문하신 분 정보</caption>
-        <colgroup>
-            <col style="width:130px">
-            <col>
-        </colgroup>
-        <tbody>
-        <tr>
-            <th scope="row" style="<?php echo $th_st; ?>">이름</th>
-            <td style="<?php echo $td_st; ?>"><?php echo $od_name; ?></td>
-        </tr>
+<!--        <table style="--><?php //echo $cont_st; ?><!--">-->
+<!--        <caption style="--><?php //echo $caption_st; ?><!--">주문하신 분 정보</caption>-->
+<!--        <colgroup>-->
+<!--            <col style="width:130px">-->
+<!--            <col>-->
+<!--        </colgroup>-->
+<!--        <tbody>-->
+<!--        <tr>-->
+<!--            <th scope="row" style="--><?php //echo $th_st; ?><!--">이름</th>-->
+<!--            <td style="--><?php //echo $td_st; ?><!--">--><?php //echo $od_name; ?><!--</td>-->
+<!--        </tr>-->
 <!--        <tr>-->
 <!--            <th scope="row" style="--><?php //echo $th_st; ?><!--">전화번호</th>-->
 <!--            <td style="--><?php //echo $td_st; ?><!--">--><?php //echo $od_tel; ?><!--</td>-->
 <!--        </tr>-->
-        <tr>
-            <th scope="row" style="<?php echo $th_st; ?>">핸드폰</th>
-            <td style="<?php echo $td_st; ?>"><?php echo $od_hp; ?></td>
-        </tr>
-        <tr>
-            <th scope="row" style="<?php echo $th_st; ?>">주소</th>
-            <td style="<?php echo $td_st; ?>"><?php echo sprintf("(%s)", $od_zip).' '.print_address($od_addr1, $od_addr2, $od_addr3, $od_addr_jibeon); ?></td>
-        </tr>
-
-        <?php if ($od_hope_date) { ?>
-        <tr>
-            <th scope="row" style="<?php echo $th_st; ?>">희망배송일</th>
-            <td style="<?php echo $td_st; ?>"><?php echo $od_hope_date;?> (<?php echo get_yoil($od_hope_date);?>)</td>
-        </tr>
-        <?php } ?>
-        </tbody>
-        </table>
+<!--        <tr>-->
+<!--            <th scope="row" style="--><?php //echo $th_st; ?><!--">핸드폰</th>-->
+<!--            <td style="--><?php //echo $td_st; ?><!--">--><?php //echo $od_hp; ?><!--</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <th scope="row" style="--><?php //echo $th_st; ?><!--">주소</th>-->
+<!--            <td style="--><?php //echo $td_st; ?><!--">--><?php //echo sprintf("(%s)", $od_zip).' '.print_address($od_addr1, $od_addr2, $od_addr3, $od_addr_jibeon); ?><!--</td>-->
+<!--        </tr>-->
+<!---->
+<!--        --><?php //if ($od_hope_date) { ?>
+<!--        <tr>-->
+<!--            <th scope="row" style="--><?php //echo $th_st; ?><!--">희망배송일</th>-->
+<!--            <td style="--><?php //echo $td_st; ?><!--">--><?php //echo $od_hope_date;?><!-- (--><?php //echo get_yoil($od_hope_date);?><!--)</td>-->
+<!--        </tr>-->
+<!--        --><?php //} ?>
+<!--        </tbody>-->
+<!--        </table>-->
 
         <table style="<?php echo $cont_st; ?>">
         <caption style="<?php echo $caption_st; ?>">배송지 정보</caption>

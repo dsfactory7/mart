@@ -784,61 +784,61 @@ add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
 
     <div class="compare_wrap">
 
-        <section id="anc_sodr_orderer" class="compare_left">
-            <h3>주문하신 분</h3>
-
-            <div class="tbl_frm01">
-                <table>
-                <caption>주문자/배송지 정보</caption>
-                <colgroup>
-                    <col class="grid_4">
-                    <col>
-                </colgroup>
-                <tbody>
-                <tr>
-                    <th scope="row"><label for="od_name"><span class="sound_only">주문하신 분 </span>이름</label></th>
-                    <td><input type="text" name="od_name" value="<?php echo $od['od_name']; ?>" id="od_name" required class="frm_input required"></td>
-                </tr>
+<!--        <section id="anc_sodr_orderer" class="compare_left">-->
+<!--            <h3>주문하신 분</h3>-->
+<!---->
+<!--            <div class="tbl_frm01">-->
+<!--                <table>-->
+<!--                <caption>주문자/배송지 정보</caption>-->
+<!--                <colgroup>-->
+<!--                    <col class="grid_4">-->
+<!--                    <col>-->
+<!--                </colgroup>-->
+<!--                <tbody>-->
+<!--                <tr>-->
+<!--                    <th scope="row"><label for="od_name"><span class="sound_only">주문하신 분 </span>이름</label></th>-->
+<!--                    <td><input type="text" name="od_name" value="--><?php //echo $od['od_name']; ?><!--" id="od_name" required class="frm_input required"></td>-->
+<!--                </tr>-->
 <!--                <tr>-->
 <!--                    <th scope="row"><label for="od_tel"><span class="sound_only">주문하신 분 </span>전화번호</label></th>-->
 <!--                    <td><input type="text" name="od_tel" value="--><?php //echo $od['od_tel']; ?><!--" id="od_tel" required class="frm_input required"></td>-->
 <!--                </tr>-->
-                <tr>
-                    <th scope="row"><label for="od_hp"><span class="sound_only">주문하신 분 </span>핸드폰</label></th>
-                    <td><input type="text" name="od_hp" value="<?php echo $od['od_hp']; ?>" id="od_hp" required class="frm_input required"></td>
-                </tr>
-                <tr>
-                    <th scope="row"><span class="sound_only">주문하시는 분 </span>POSTCODE</th>
-                    <td>
-                        <label for="od_zip" class="sound_only">POSTCODE</label>
-                        <input type="text" name="od_zip" value="<?php echo $od['od_zip']; ?>" id="od_zip" required class="frm_input required" size="4"><br>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row"><span class="sound_only">주문하시는 분 </span>ADDRESS</th>
-                    <td>
-                        <input type="text" name="od_addr1" value="<?php echo $od['od_addr1']; ?>" id="od_addr1" required class="frm_input required" size="35">
-                        <label for="od_addr1">기본주소</label><br>
+<!--                <tr>-->
+<!--                    <th scope="row"><label for="od_hp"><span class="sound_only">주문하신 분 </span>핸드폰</label></th>-->
+<!--                    <td><input type="text" name="od_hp" value="--><?php //echo $od['od_hp']; ?><!--" id="od_hp" required class="frm_input required"></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <th scope="row"><span class="sound_only">주문하시는 분 </span>POSTCODE</th>-->
+<!--                    <td>-->
+<!--                        <label for="od_zip" class="sound_only">POSTCODE</label>-->
+<!--                        <input type="text" name="od_zip" value="--><?php //echo $od['od_zip']; ?><!--" id="od_zip" required class="frm_input required" size="4"><br>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <th scope="row"><span class="sound_only">주문하시는 분 </span>ADDRESS</th>-->
+<!--                    <td>-->
+<!--                        <input type="text" name="od_addr1" value="--><?php //echo $od['od_addr1']; ?><!--" id="od_addr1" required class="frm_input required" size="35">-->
+<!--                        <label for="od_addr1">기본주소</label><br>-->
 <!--                        <input type="text" name="od_addr2" value="--><?php //echo $od['od_addr2']; ?><!--" id="od_addr2" class="frm_input" size="35">-->
 <!--                        <label for="od_addr2">상세주소</label>-->
 <!--                        <br>-->
 <!--                        <input type="text" name="od_addr3" value="--><?php //echo $od['od_addr3']; ?><!--" id="od_addr3" class="frm_input" size="35">-->
 <!--                        <label for="od_addr3">참고항목</label>-->
 <!--                        <input type="hidden" name="od_addr_jibeon" value="--><?php //echo $od['od_addr_jibeon']; ?><!--"><br>-->
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row"><label for="od_email"><span class="sound_only">주문하신 분 </span>E-mail</label></th>
-                    <td><input type="text" name="od_email" value="<?php echo $od['od_email']; ?>" id="od_email" required class="frm_input email required" size="30"></td>
-                </tr>
-                <tr>
-                    <th scope="row"><span class="sound_only">주문하신 분 </span>IP Address</th>
-                    <td><?php echo $od['od_ip']; ?></td>
-                </tr>
-                </tbody>
-                </table>
-            </div>
-        </section>
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <th scope="row"><label for="od_email"><span class="sound_only">주문하신 분 </span>E-mail</label></th>-->
+<!--                    <td><input type="text" name="od_email" value="--><?php //echo $od['od_email']; ?><!--" id="od_email" required class="frm_input email required" size="30"></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <th scope="row"><span class="sound_only">주문하신 분 </span>IP Address</th>-->
+<!--                    <td>--><?php //echo $od['od_ip']; ?><!--</td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--                </table>-->
+<!--            </div>-->
+<!--        </section>-->
 
         <section id="anc_sodr_taker" class="compare_right">
             <h3>받으시는 분</h3>

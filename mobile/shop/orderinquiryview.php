@@ -436,41 +436,41 @@ if($od['od_pg'] == 'lg') {
             </div>
         </section>
 
-        <section id="sod_fin_orderer">
-            <h3>주문하신 분</h3>
-
-            <div class="tbl_head01 tbl_wrap">
-                <table>
-                <colgroup>
-                    <col class="grid_3">
-                    <col>
-                </colgroup>
-                <tbody>
-                <tr>
-                    <th scope="row">이 름</th>
-                    <td><?php echo get_text($od['od_name']); ?></td>
-                </tr>
+<!--        <section id="sod_fin_orderer">-->
+<!--            <h3>주문하신 분</h3>-->
+<!---->
+<!--            <div class="tbl_head01 tbl_wrap">-->
+<!--                <table>-->
+<!--                <colgroup>-->
+<!--                    <col class="grid_3">-->
+<!--                    <col>-->
+<!--                </colgroup>-->
+<!--                <tbody>-->
+<!--                <tr>-->
+<!--                    <th scope="row">이 름</th>-->
+<!--                    <td>--><?php //echo get_text($od['od_name']); ?><!--</td>-->
+<!--                </tr>-->
 <!--                <tr>-->
 <!--                    <th scope="row">전화번호</th>-->
 <!--                    <td>--><?php //echo get_text($od['od_tel']); ?><!--</td>-->
 <!--                </tr>-->
-                <tr>
-                    <th scope="row">핸드폰</th>
-                    <td><?php echo get_text($od['od_hp']); ?></td>
-                </tr>
-                <tr>
-                    <th scope="row">주 소</th>
-                    <td><?php echo get_text(sprintf("(%s)", $od['od_zip']).' '.print_address($od['od_addr1'], $od['od_addr2'], $od['od_addr3'], $od['od_addr_jibeon'])); ?></td>
-                </tr>
-                <tr>
-                    <th scope="row">E-mail</th>
-                    <td><?php echo get_text($od['od_email']); ?></td>
-                </tr>
-                </tbody>
-                </table>
-            </div>
-
-        </section>
+<!--                <tr>-->
+<!--                    <th scope="row">핸드폰</th>-->
+<!--                    <td>--><?php //echo get_text($od['od_hp']); ?><!--</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <th scope="row">주 소</th>-->
+<!--                    <td>--><?php //echo get_text(sprintf("(%s)", $od['od_zip']).' '.print_address($od['od_addr1'], $od['od_addr2'], $od['od_addr3'], $od['od_addr_jibeon'])); ?><!--</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <th scope="row">E-mail</th>-->
+<!--                    <td>--><?php //echo get_text($od['od_email']); ?><!--</td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--                </table>-->
+<!--            </div>-->
+<!---->
+<!--        </section>-->
 
         <section id="sod_fin_receiver">
             <h3>받으시는 분</h3>
