@@ -63,7 +63,7 @@ $(function() {
 
         var f = window.opener.forderform;
         f.od_b_name.value        = addr[0];
-        f.od_b_tel.value         = addr[1];
+//        f.od_b_tel.value         = addr[1];
         f.od_b_hp.value          = addr[2];
         f.od_b_zip.value         = addr[3];
         f.od_b_addr1.value       = addr[4];

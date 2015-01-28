@@ -274,81 +274,6 @@ require_once(G5_MSHOP_PATH.'/'.$default['de_pg_service'].'/orderform.1.php');
 
     <?php echo $content; ?>
 
-    <section id="sod_frm_orderer">
-        <h2>주문하시는 분</h2>
-
-        <div class="tbl_frm01 tbl_wrap">
-            <table>
-            <tbody>
-            <tr>
-                <th scope="row"><label for="od_name">이름<strong class="sound_only"> 필수</strong></label></th>
-                <td><input type="text" name="od_name" value="<?php echo $member['mb_name']; ?>" id="od_name" required class="frm_input required" maxlength="20"></td>
-            </tr>
-
-            <?php if (!$is_member) { // 비회원이면 ?>
-            <tr>
-                <th scope="row"><label for="od_pwd">비밀번호<strong class="sound_only"> 필수</strong></label></th>
-                <td>
-                    <input type="password" name="od_pwd" id="od_pwd" required class="frm_input required" maxlength="20">
-                    영,숫자 3~20자 (주문서 조회시 필요)
-                </td>
-            </tr>
-            <?php } ?>
-
-<!--            <tr>-->
-<!--                <th scope="row"><label for="od_tel">전화번호<strong class="sound_only"> 필수</strong></label></th>-->
-<!--                <td><input type="text" name="od_tel" value="--><?php //echo $member['mb_tel']; ?><!--" id="od_tel" required class="frm_input required" maxlength="20"></td>-->
-<!--            </tr>-->
-            <tr>
-                <th scope="row"><label for="od_hp">핸드폰</label></th>
-                <td><input type="text" name="od_hp" value="<?php echo $member['mb_hp']; ?>" id="od_hp" required class="frm_input required" maxlength="20"></td>
-            </tr>
-            <tr>
-                <th scope="row">POSTCODE</th>
-                <td>
-                    <label for="od_zip" class="sound_only">우편번호<strong class="sound_only"> 필수</strong></label>
-                    <input type="text" name="od_zip" value="<?php echo $member['mb_zip'] ?>" id="od_zip" required class="frm_input required" size="4" maxlength="4">
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">ADDRESS</th>
-                <td>
-                    <label for="od_addr1" class="sound_only">기본주소<strong class="sound_only"> 필수</strong></label>
-                    <input type="text" name="od_addr1" value="<?php echo $member['mb_addr1'] ?>" id="od_addr1" required class="frm_input frm_address required">
-<!--                    <label for="od_addr2" class="sound_only">상세주소</label>-->
-<!--                    <input type="text" name="od_addr2" value="--><?php //echo $member['mb_addr2'] ?><!--" id="od_addr2" class="frm_input frm_address">-->
-<!--                    <label for="od_addr3" class="sound_only">참고항목</label>-->
-<!--                    <input type="text" name="od_addr3" value="--><?php //echo $member['mb_addr3'] ?><!--" id="od_addr3" class="frm_input frm_address" readonly="readonly">-->
-<!--                    <input type="hidden" name="od_addr_jibeon" value="--><?php //echo $member['mb_addr_jibeon']; ?><!--"><br>-->
-                </td>
-            </tr>
-            <tr>
-                <th scope="row"><label for="od_email">E-mail<strong class="sound_only"> 필수</strong></label></th>
-                <td><input type="email" name="od_email" value="<?php echo $member['mb_email']; ?>" id="od_email" required class="frm_input required" maxlength="100"></td>
-            </tr>
-
-            <?php if ($default['de_hope_date_use']) { // 배송희망일 사용 ?>
-            <tr>
-                <th scope="row"><label for="od_hope_date">희망배송일</label></th>
-                <td>
-                    <!-- <select name="od_hope_date" id="od_hope_date">
-                    <option value="">선택하십시오.</option>
-                    <?php
-                    for ($i=0; $i<7; $i++) {
-                        $sdate = date("Y-m-d", time()+86400*($default['de_hope_date_after']+$i));
-                        echo '<option value="'.$sdate.'">'.$sdate.' ('.get_yoil($sdate).')</option>'.PHP_EOL;
-                    }
-                    ?>
-                    </select> -->
-                    <input type="text" name="od_hope_date" value="" id="od_hope_date" required class="frm_input required" size="11" maxlength="10" readonly> 이후로 배송 바랍니다.
-                </td>
-            </tr>
-            <?php } ?>
-            </tbody>
-            </table>
-        </div>
-    </section>
-
     <section id="sod_frm_taker">
         <h2>받으시는 분</h2>
 
@@ -362,8 +287,8 @@ require_once(G5_MSHOP_PATH.'/'.$default['de_pg_service'].'/orderform.1.php');
                 $sep = chr(30);
 
                 // 주문자와 동일
-                $addr_list .= '<input type="radio" name="ad_sel_addr" value="same" id="ad_sel_addr_same">'.PHP_EOL;
-                $addr_list .= '<label for="ad_sel_addr_same">주문자와 동일</label>'.PHP_EOL;
+//                $addr_list .= '<input type="radio" name="ad_sel_addr" value="same" id="ad_sel_addr_same">'.PHP_EOL;
+//                $addr_list .= '<label for="ad_sel_addr_same">주문자와 동일</label>'.PHP_EOL;
 
                 // 기본배송지
                 $sql = " select *
@@ -395,11 +320,12 @@ require_once(G5_MSHOP_PATH.'/'.$default['de_pg_service'].'/orderform.1.php');
                 $addr_list .= '<label for="od_sel_addr_new">신규배송지</label>'.PHP_EOL;
 
                 $addr_list .='<a href="'.G5_SHOP_URL.'/orderaddress.php" id="order_address">배송지목록</a>';
-            } else {
-                // 주문자와 동일
-                $addr_list .= '<input type="checkbox" name="ad_sel_addr" value="same" id="ad_sel_addr_same">'.PHP_EOL;
-                $addr_list .= '<label for="ad_sel_addr_same">주문자와 동일</label>'.PHP_EOL;
             }
+//            else {
+//                // 주문자와 동일
+//                $addr_list .= '<input type="checkbox" name="ad_sel_addr" value="same" id="ad_sel_addr_same">'.PHP_EOL;
+//                $addr_list .= '<label for="ad_sel_addr_same">주문자와 동일</label>'.PHP_EOL;
+//            }
             ?>
             <tr>
                 <th scope="row">배송지선택</th>
@@ -451,7 +377,7 @@ require_once(G5_MSHOP_PATH.'/'.$default['de_pg_service'].'/orderform.1.php');
             </tr>
             <tr>
               <th scope="row"><label for="od_hope_date">Delivery Date</label></th>
-              <td><input type="text" name="od_b_hope_date" id="od_b_hope_date" required class="frm_input" size="30" readonly="readonly"></td>
+              <td><input type="text" name="od_b_hope_date" id="od_b_hope_date" required class="frm_input" size="30"></td>
             </tr>
             </tbody>
             </table>
@@ -942,15 +868,15 @@ $(function() {
             var f = document.forderform;
             f.od_b_name.value        = addr[0];
 //            f.od_b_tel.value         = addr[1];
-            f.od_b_hp.value          = addr[1];
-            f.od_b_zip.value         = addr[2];
-            f.od_b_addr1.value       = addr[3];
-            f.od_b_addr2.value       = addr[4];
-            f.od_b_addr3.value       = addr[5];
-            f.od_b_addr_jibeon.value = addr[6];
-            f.ad_subject.value       = addr[7];
+            f.od_b_hp.value          = addr[2];
+            f.od_b_zip.value         = addr[3];
+            f.od_b_addr1.value       = addr[4];
+//            f.od_b_addr2.value       = addr[5];
+//            f.od_b_addr3.value       = addr[6];
+//            f.od_b_addr_jibeon.value = addr[7];
+            f.ad_subject.value       = addr[8];
 
-            var zip = addr[2].replace(/[^0-9]/g, "");
+            var zip = addr[3].replace(/[^0-9]/g, "");
 
             if(zip != "") {
                 var code = String(zip);
@@ -1232,7 +1158,7 @@ function orderfield_check(f)
     errfld = "";
     var deffld = "";
 
-    check_field(f.od_name, "주문하시는 분 이름을 입력하십시오.");
+//    check_field(f.od_name, "주문하시는 분 이름을 입력하십시오.");
     if (typeof(f.od_pwd) != 'undefined')
     {
         clear_field(f.od_pwd);
@@ -1240,13 +1166,13 @@ function orderfield_check(f)
             error_field(f.od_pwd, "회원이 아니신 경우 주문서 조회시 필요한 비밀번호를 3자리 이상 입력해 주십시오.");
     }
 //    check_field(f.od_tel, "주문하시는 분 전화번호를 입력하십시오.");
-    check_field(f.od_addr1, "주소검색을 이용하여 주문하시는 분 주소를 입력하십시오.");
+//    check_field(f.od_addr1, "주소검색을 이용하여 주문하시는 분 주소를 입력하십시오.");
     //check_field(f.od_addr2, " 주문하시는 분의 상세주소를 입력하십시오.");
-    check_field(f.od_zip, "");
+//    check_field(f.od_zip, "");
 
-    clear_field(f.od_email);
-    if(f.od_email.value=='' || f.od_email.value.search(/(\S+)@(\S+)\.(\S+)/) == -1)
-        error_field(f.od_email, "E-mail을 바르게 입력해 주십시오.");
+//    clear_field(f.od_email);
+//    if(f.od_email.value=='' || f.od_email.value.search(/(\S+)@(\S+)\.(\S+)/) == -1)
+//        error_field(f.od_email, "E-mail을 바르게 입력해 주십시오.");
 
     if (typeof(f.od_hope_date) != "undefined")
     {
@@ -1256,7 +1182,7 @@ function orderfield_check(f)
     }
 
     check_field(f.od_b_name, "받으시는 분 이름을 입력하십시오.");
-//    check_field(f.od_b_tel, "받으시는 분 전화번호를 입력하십시오.");
+    check_field(f.od_b_hp, "받으시는 분 핸드폰 번호를 입력하십시오.");
     check_field(f.od_b_addr1, "주소검색을 이용하여 받으시는 분 주소를 입력하십시오.");
     //check_field(f.od_b_addr2, "받으시는 분의 상세주소를 입력하십시오.");
     check_field(f.od_b_zip, "");
