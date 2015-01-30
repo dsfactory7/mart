@@ -496,7 +496,7 @@ if($od['od_pg'] == 'lg') {
                 </tr>
                 <tr>
                     <th scope="row">주 소</th>
-                    <td><?php echo get_text(sprintf("(%s)", $od['od_b_zip']).' '.print_address($od['od_b_addr1'], $od['od_b_addr2'], $od['od_b_addr3'], $od['od_b_addr_jibeon'])); ?></td>
+                    <td><?php echo get_text(print_address($od['od_b_addr2'], $od['od_b_addr1'], $od['od_b_zip'], "")); ?></td>
                 </tr>
                 <?php
                 // 희망배송일을 사용한다면

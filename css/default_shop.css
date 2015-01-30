@@ -199,6 +199,7 @@ a.btn_admin:focus, a.btn_admin:hover {text-decoration:none}
 .tbl_frm01 .frm_address {margin-top:5px}
 .tbl_frm01 .frm_file {display:block;margin-bottom:5px}
 .tbl_frm01 .frm_info {display:block;padding:0 0 5px;line-height:1.4em}
+.frm_suburb_select {border:1px solid #e4eaec;background:#f7f7f7;color:#000;vertical-align:middle;line-height:2em;height:22px;min-width: 200px}
 
 /* 자료 없는 목록 */
 .empty_table {padding:50px 0 !important;text-align:center}

@@ -86,7 +86,7 @@ $order_action_url = G5_HTTPS_SHOP_URL.'/orderaddressupdate.php';
             </td>
             <td class="td_namesmall"><?php echo $row['ad_name']; ?></td>
             <td class="td_numbig"><?php echo $row['ad_tel']; ?><br><?php echo $row['ad_hp']; ?></td>
-            <td><?php echo print_address($row['ad_addr1'], $row['ad_addr2'], $row['ad_addr3'], $row['ad_jibeon']); ?></td>
+            <td><?php echo print_address($row['ad_addr2'], $row['ad_addr1'], $row['ad_zip'], ""); ?></td>
             <td class="td_mng">
                 <input type="hidden" value="<?php echo $addr; ?>">
                 <button type="button" class="sel_address">선택</button>
@@ -119,11 +119,18 @@ $(function() {
 //        f.od_b_tel.value         = addr[1];
         f.od_b_hp.value          = addr[2];
         f.od_b_zip.value         = addr[3];
-        f.od_b_addr1.value       = addr[4];
-//        f.od_b_addr2.value       = addr[5];
+//        f.od_b_addr1.value       = addr[4];
+
+        f.od_b_addr1.length = 1;
+        f.od_b_addr1.options[0].text = f.od_b_addr1.options[0].value = addr[4];
+        f.od_b_addr1.options[0].disabled = false;
+        f.od_b_addr1.options[0].style.display = "block";
+
+        f.od_b_addr2.value       = addr[5];
 //        f.od_b_addr3.value       = addr[6];
         f.od_b_addr_jibeon.value = addr[7];
         f.ad_subject.value       = addr[8];
+        f.od_hope_date.value     = "";
 
         var zip = addr[3].replace(/[^0-9]/g, "");
 

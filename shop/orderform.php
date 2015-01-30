@@ -7,6 +7,9 @@ add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
 // 주문상품 재고체크 js 파일
 add_javascript('<script src="'.G5_JS_URL.'/shop.order.js"></script>', 0);
 
+// retrieve suburb list by postcode
+add_javascript('<script src="'.G5_JS_URL.'/shop.suburblist.js"></script>', 0);
+
 if (G5_IS_MOBILE) {
     include_once(G5_MSHOP_PATH.'/orderform.php');
     return;
@@ -382,16 +385,17 @@ require_once('./'.$default['de_pg_service'].'/orderform.1.php');
                 <th scope="row">POSTCODE</th>
                 <td id="sod_frm_addr">
                     <label for="od_b_zip" class="sound_only">POSTCODE<strong class="sound_only"> 필수</strong></label>
-                    <input type="text" name="od_b_zip" id="od_b_zip" required class="frm_input required" size="4" maxlength="4"><br>
+                    <input type="text" name="od_b_zip" id="od_b_zip" required class="frm_input required" size="4" maxlength="4" onblur="update_suburb_state(this)"><br>
                 </td>
             </tr>
             <tr>
                 <th scope="row">ADDRESS</th>
                 <td id="sod_frm_addr">
-                    <input type="text" name="od_b_addr1" id="od_b_addr1" required class="frm_input frm_address required" size="60">
-<!--                    <label for="od_b_addr1">기본주소<strong class="sound_only"> 필수</strong></label><br>-->
-<!--                    <input type="text" name="od_b_addr2" id="od_b_addr2" class="frm_input frm_address" size="60">-->
-<!--                    <label for="od_b_addr2">상세주소</label>-->
+                    <select name="od_b_addr1" id="od_b_addr1" required class="frm_suburb_select frm_address required" style="color: #A9A9A9;">
+                        <option value="" disabled selected style='display:none;'>Suburb and state</option>
+                    </select><br>
+                    <input type="text" name="od_b_addr2" id="od_b_addr2" required class="frm_input frm_address required" style="min-width: 200px" placeholder="Street Address">
+
 <!--                    <br>-->
 <!--                    <input type="text" name="od_b_addr3" id="od_b_addr3" readonly="readonly" class="frm_input frm_address" size="60">-->
 <!--                    <label for="od_b_addr3">참고항목</label><br>-->
@@ -893,11 +897,18 @@ $(function() {
 //            f.od_b_tel.value         = addr[1];
             f.od_b_hp.value          = addr[2];
             f.od_b_zip.value         = addr[3];
-            f.od_b_addr1.value       = addr[4];
-//            f.od_b_addr2.value       = addr[5];
+//            f.od_b_addr1.value       = addr[4];
+
+            f.od_b_addr1.length = 1;
+            f.od_b_addr1.options[0].text = f.od_b_addr1.options[0].value = addr[4];
+            f.od_b_addr1.options[0].disabled = false;
+            f.od_b_addr1.options[0].style.display = "block";
+
+            f.od_b_addr2.value       = addr[5];
 //            f.od_b_addr3.value       = addr[6];
 //            f.od_b_addr_jibeon.value = addr[7];
             f.ad_subject.value       = addr[8];
+            f.od_hope_date.value     = "";
 
             var zip = addr[3].replace(/[^0-9]/g, "");
 
@@ -1071,6 +1082,40 @@ function calculate_tax()
     $("input[name=comm_free_mny]").val(comm_free_mny);
 }
 
+function update_suburb_state(postcode)
+{
+    var suburb = document.getElementById("od_b_addr1");
+
+    if (postcode.value.length != 4) {
+        suburb.style.color = "gray";
+        suburb.length = 1;
+        suburb.options[0].text = "Suburb and state";
+        suburb.options[0].diabled = true;
+        suburb.options[0].selected = true;
+        suburb.options[0].style.display = "none";
+        return;
+    }
+
+    var data = get_suburbs_by_postcode(postcode.value);
+
+    if (data.result == false) {
+        suburb.style.color = "red";
+        suburb.length = 1;
+        suburb.options[0].text =  "Not available area";
+        suburb.options[0].value = "";
+        return;
+    }
+
+    suburb.style.color = "black";
+    suburb.length = data.list.length;
+    for (i=0; i < data.list.length; i++) {
+        suburb.options[i].text = suburb.options[i].value = data.list[i];
+        suburb.options[i].disabled = false;
+        suburb.options[i].style.display = "block";
+    }
+
+}
+
 function forderform_check(f)
 {
     // 재고체크
@@ -1109,8 +1154,8 @@ function forderform_check(f)
 
     check_field(f.od_b_name, "받으시는 분 이름을 입력하십시오.");
     check_field(f.od_b_hp, "받으시는 분 핸드폰 번호를 입력하십시오.");
-    check_field(f.od_b_addr1, "주소검색을 이용하여 받으시는 분 주소를 입력하십시오.");
-    //check_field(f.od_b_addr2, "받으시는 분의 상세주소를 입력하십시오.");
+    check_field(f.od_b_addr1, "받으시는 분 주소를 입력하십시오.");
+    check_field(f.od_b_addr2, "받으시는 분의 상세주소를 입력하십시오.");
     check_field(f.od_b_zip, "");
 
     var od_settle_bank = document.getElementById("od_settle_bank");

@@ -361,14 +361,16 @@ require_once(G5_MSHOP_PATH.'/'.$default['de_pg_service'].'/orderform.1.php');
                 <th scope="row">POSTCODE</th>
                 <td id="sod_frm_addr">
                     <label for="od_b_zip" class="sound_only">POSTCODE<strong class="sound_only"> 필수</strong></label>
-                    <input type="text" name="od_b_zip" id="od_b_zip" required class="frm_input required" size="4" maxlength="4"><br>
+                    <input type="text" name="od_b_zip" id="od_b_zip" required class="frm_input required" size="4" maxlength="4" onblur="update_suburb_state(this)"><br>
                 </td>
             </tr>
             <tr>
                 <th scope="row">ADDRESS</th>
                 <td id="sod_frm_addr">
-                    <label for="od_b_addr1" class="sound_only">기본주소<strong class="sound_only"> 필수</strong></label>
-                    <input type="text" name="od_b_addr1" id="od_b_addr1" required class="frm_input frm_address required">
+                    <select name="od_b_addr1" id="od_b_addr1" required class="frm_suburb_select frm_address required" style="color: #A9A9A9;">
+                        <option value="" disabled selected style='display:none;'>Suburb and state</option>
+                    </select><br>
+                    <input type="text" name="od_b_addr2" id="od_b_addr2" required class="frm_input frm_address required" style="min-width: 200px" placeholder="Street Address">
                 </td>
             </tr>
             <tr>
@@ -377,7 +379,7 @@ require_once(G5_MSHOP_PATH.'/'.$default['de_pg_service'].'/orderform.1.php');
             </tr>
             <tr>
               <th scope="row"><label for="od_hope_date">Delivery Date</label></th>
-              <td><input type="text" name="od_b_hope_date" id="od_b_hope_date" required class="frm_input" size="30"></td>
+              <td><input type="text" name="od_hope_date" id="od_hope_date" required class="frm_input required" size="30"></td>
             </tr>
             </tbody>
             </table>
@@ -870,11 +872,18 @@ $(function() {
 //            f.od_b_tel.value         = addr[1];
             f.od_b_hp.value          = addr[2];
             f.od_b_zip.value         = addr[3];
-            f.od_b_addr1.value       = addr[4];
-//            f.od_b_addr2.value       = addr[5];
+//            f.od_b_addr1.value       = addr[4];
+
+            f.od_b_addr1.length = 1;
+            f.od_b_addr1.options[0].text = f.od_b_addr1.options[0].value = addr[4];
+            f.od_b_addr1.options[0].disabled = false;
+            f.od_b_addr1.options[0].style.display = "block";
+
+            f.od_b_addr2.value       = addr[5];
 //            f.od_b_addr3.value       = addr[6];
 //            f.od_b_addr_jibeon.value = addr[7];
             f.ad_subject.value       = addr[8];
+            f.od_hope_date.value     = "";
 
             var zip = addr[3].replace(/[^0-9]/g, "");
 
@@ -1126,6 +1135,40 @@ function pay_approval()
     f.submit();
 }
 
+function update_suburb_state(postcode)
+{
+    var suburb = document.getElementById("od_b_addr1");
+
+    if (postcode.value.length != 4) {
+        suburb.style.color = "gray";
+        suburb.length = 1;
+        suburb.options[0].text = "Suburb and state";
+        suburb.options[0].diabled = true;
+        suburb.options[0].selected = true;
+        suburb.options[0].style.display = "none";
+        return;
+    }
+
+    var data = get_suburbs_by_postcode(postcode.value);
+
+    if (data.result == false) {
+        suburb.style.color = "red";
+        suburb.length = 1;
+        suburb.options[0].text =  "Not available area";
+        suburb.options[0].value = "";
+        return;
+    }
+
+    suburb.style.color = "black";
+    suburb.length = data.list.length;
+    for (i=0; i < data.list.length; i++) {
+        suburb.options[i].text = suburb.options[i].value = data.list[i];
+        suburb.options[i].disabled = false;
+        suburb.options[i].style.display = "block";
+    }
+
+}
+
 function forderform_check()
 {
     var f = document.forderform;
@@ -1183,8 +1226,8 @@ function orderfield_check(f)
 
     check_field(f.od_b_name, "받으시는 분 이름을 입력하십시오.");
     check_field(f.od_b_hp, "받으시는 분 핸드폰 번호를 입력하십시오.");
-    check_field(f.od_b_addr1, "주소검색을 이용하여 받으시는 분 주소를 입력하십시오.");
-    //check_field(f.od_b_addr2, "받으시는 분의 상세주소를 입력하십시오.");
+    check_field(f.od_b_addr1, "받으시는 분 주소를 입력하십시오.");
+    check_field(f.od_b_addr2, "받으시는 분의 상세주소를 입력하십시오.");
     check_field(f.od_b_zip, "");
 
     var od_settle_bank = document.getElementById("od_settle_bank");
