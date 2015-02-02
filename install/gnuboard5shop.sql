@@ -590,6 +590,7 @@ CREATE TABLE IF NOT EXISTS `g5_shop_order` (
   `od_mod_history` text NOT NULL,
   `od_status` varchar(255) NOT NULL DEFAULT '',  
   `od_hope_date` date NOT NULL DEFAULT '0000-00-00',  
+  `od_hope_time` varchar(20) NOT NULL DEFAULT '',
   `od_settle_case` varchar(255) NOT NULL DEFAULT '',
   `od_mobile` tinyint(4) NOT NULL DEFAULT '0',
   `od_pg` varchar(255) NOT NULL DEFAULT '',
@@ -743,4 +744,28 @@ CREATE TABLE IF NOT EXISTS `g5_shop_item_stocksms` (
   `ss_datetime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `ss_ip` varchar(25) NOT NULL DEFAULT '',
   PRIMARY KEY (`ss_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `g5_shop_delivery_area`
+--
+DROP TABLE IF EXISTS `g5_shop_delivery_area`;
+CREATE TABLE IF NOT EXISTS `g5_shop_delivery_area` (
+  `sb_id` int(11) NOT NULL AUTO_INCREMENT,
+  `sb_postcode` char(4) NOT NULL,
+  `sb_suburb` varchar(60) NOT NULL,
+  `sb_state` varchar(30) NOT NULL,
+  `sb_available` tinyint(1) NOT NULL DEFAULT 0,
+  `sb_fee` int(11) NOT NULL DEFAULT 0,
+  `sb_mon` tinyint(1) NOT NULL DEFAULT 0,
+  `sb_tue` tinyint(1) NOT NULL DEFAULT 0,
+  `sb_wed` tinyint(1) NOT NULL DEFAULT 0,
+  `sb_thu` tinyint(1) NOT NULL DEFAULT 0,
+  `sb_fri` tinyint(1) NOT NULL DEFAULT 0,
+  `sb_sat` tinyint(1) NOT NULL DEFAULT 0,
+  `sb_sun` tinyint(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`sb_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
