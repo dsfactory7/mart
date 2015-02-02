@@ -38,7 +38,7 @@ if (G5_IS_MOBILE) {
     <div id="hd_wrapper">
 
         <div id="logo">
-            <a href="<?php echo G5_URL ?>"><img src="<?php echo G5_IMG_URL ?>/logo.jpg" alt="<?php echo $config['cf_title']; ?>"></a>
+            <a href="<?php echo G5_URL ?>"><img height="70" width="190" src="<?php echo G5_IMG_URL ?>/logo.png" alt="<?php echo $config['cf_title']; ?>"></a>
         </div>
 
         <fieldset id="hd_sch">
@@ -79,13 +79,12 @@ if (G5_IS_MOBILE) {
             }
             </script>
         </fieldset>
-
-        <div id="text_size">
+<!--        <div id="text_size">-->
             <!-- font_resize('엘리먼트id', '제거할 class', '추가할 class'); -->
-            <button id="size_down" onclick="font_resize('container', 'ts_up ts_up2', '');"><img src="<?php echo G5_URL; ?>/img/ts01.gif" alt="기본"></button>
-            <button id="size_def" onclick="font_resize('container', 'ts_up ts_up2', 'ts_up');"><img src="<?php echo G5_URL; ?>/img/ts02.gif" alt="크게"></button>
-            <button id="size_up" onclick="font_resize('container', 'ts_up ts_up2', 'ts_up2');"><img src="<?php echo G5_URL; ?>/img/ts03.gif" alt="더크게"></button>
-        </div>
+<!--            <button id="size_down" onclick="font_resize('container', 'ts_up ts_up2', '');"><img src="--><?php //echo G5_URL; ?><!--/img/ts01.gif" alt="기본"></button>-->
+<!--            <button id="size_def" onclick="font_resize('container', 'ts_up ts_up2', 'ts_up');"><img src="--><?php //echo G5_URL; ?><!--/img/ts02.gif" alt="크게"></button>-->
+<!--            <button id="size_up" onclick="font_resize('container', 'ts_up ts_up2', 'ts_up2');"><img src="--><?php //echo G5_URL; ?><!--/img/ts03.gif" alt="더크게"></button>-->
+<!--        </div>-->
 
         <ul id="tnb">
             <?php if ($is_member) {  ?>

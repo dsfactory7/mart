@@ -407,8 +407,12 @@ require_once('./'.$default['de_pg_service'].'/orderform.1.php');
                 <td><textarea name="od_memo" id="od_memo"></textarea></td>
             </tr>
             <tr>
-                <th scope="row"><label for="od_hope_date">Delivery Date</label></th>
-                <td><input type="text" name="od_hope_date" id="od_hope_date" required class="frm_input required" size="30"></td>
+                <th scope="row">Delivery Date/Time</th>
+                <td>
+                    <input type="text" name="od_hope_date" id="od_hope_date" required class="frm_input required" size="8" readonly placeholder="date">
+                    <input type="text" name="od_hope_time" id="od_hope_time" required class="frm_input required" size="8" readonly placeholder="time">
+                    <a href="<?php echo G5_SHOP_URL; ?>/delivery_date_picker.php" id="delivery_date_picker" class="btn_frmline">Choose Date/Time</a>
+                </td>
             </tr>
             </tbody>
             </table>
@@ -927,6 +931,17 @@ $(function() {
     $("#order_address").on("click", function() {
         var url = this.href;
         window.open(url, "win_address", "left=100,top=100,width=800,height=600,scrollbars=1");
+        return false;
+    });
+
+    // pick Delivery Date
+    $("#delivery_date_picker").on("click", function() {
+
+        // check postcode first
+
+        var f = document.forderform;
+        var url = this.href+"?postcode="+f.od_b_zip.value;
+        window.open(url, "delivery date picker", "left=100,top=100,width=800,height=350");
         return false;
     });
 });

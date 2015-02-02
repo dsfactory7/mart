@@ -9,7 +9,7 @@ if(isset($_POST['postcode'])) {
   $available = false;
 
   $sql = " select *
-                from {$g5['g5_shop_delivery_area']}
+                from {$g5['g5_shop_delivery_area_table']}
                 where sb_postcode = '$postcode'
                   and sb_available = '1'";
 
