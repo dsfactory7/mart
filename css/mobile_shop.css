@@ -632,3 +632,69 @@ a.btn_admin:focus, a.btn_admin:hover {text-decoration:none}
 /* 상품상세 메뉴 floating */
 #info_top_layer {display:none;position:absolute; top:0; left:0; width:100%; background-color: #eee;}
 #form_btn_layer { display:none;position:absolute; top:0; left: 0; width: 100%; height: 60px; background-color: #eee;}
+
+
+/* delivery date picker */
+.delivery_date_picker {}
+
+.delivery_date_picker h1 {
+  margin: 0;
+  padding: 20px;
+  font-size: 18px;
+  border-top: 3px solid #4E5D60;
+  border-bottom: 1px solid #E9E9E9;
+}
+
+.delivery_date_picker .tbl_wrap {
+  margin: 20px;
+}
+
+.delivery_date_picker table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  text-align: center;
+}
+
+.delivery_date_picker table th, td {
+  padding: 10px 0;
+  font-size: 14px;
+}
+
+.delivery_date_picker table th, td {
+  border: 3px solid #ffffff;
+}
+
+.delivery_date_picker table .col_header, .row_header {
+  background-color: #9dbbfa;
+}
+
+.delivery_date_picker table .row_cell {
+  background-color: #d0e1fa;
+  cursor: pointer;
+}
+
+.delivery_date_picker table .row_cell:hover {
+  background-color: #6182fa;
+  cursor: pointer;
+}
+
+.delivery_date_picker table .row_cell_na {
+  background-color:   #ebebeb;
+}
+
+.delivery_date_picker .win_btn {
+  clear: both;
+  padding: 20px;
+  text-align: center;
+}
+.delivery_date_picker .win_btn button {
+  display:inline-block;
+  padding:0 10px;
+  height:30px;
+  border:0;
+  background:#4b545e;
+  color:#fff;
+  line-height:2em;
+  cursor:pointer;
+}

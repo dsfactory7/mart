@@ -1,117 +1,117 @@
 <?php
 include_once('./_common.php');
 
-$g5['title'] = '배송지 목록';
+$g5['title'] = 'Delivery date picker';
 include_once(G5_PATH.'/head.sub.php');
 
-$order_action_url = G5_HTTPS_SHOP_URL.'/orderaddressupdate.php';
+$period = 7; // TODO: from config
+
 ?>
 
-<form name="forderaddress" method="post" action="<?php echo $order_action_url; ?>" autocomplete="off">
-<div id="sod_addr" class="new_win">
-    <h1 id="win_title">배송지 목록</h1>
+<div class="delivery_date_picker">
 
-    <div class="win_desc">
-        <ul>
-            <?php
-            $sep = chr(30);
-            for($i=0; $row=sql_fetch_array($result); $i++) {
-                $addr = $row['ad_name'].$sep.$row['ad_tel'].$sep.$row['ad_hp'].$sep.$row['ad_zip'].$sep.$row['ad_addr1'].$sep.$row['ad_addr2'].$sep.$row['ad_addr3'].$sep.$row['ad_jibeon'].$sep.$row['ad_subject'];
-            ?>
-            <li>
-                <div class="addr_chk" rowspan="3">
-                    <input type="hidden" name="ad_id[<?php echo $i; ?>]" value="<?php echo $row['ad_id'];?>">
-                    <label for="chk_<?php echo $i;?>" class="sound_only">배송지선택</label>
-                    <input type="checkbox" name="chk[]" value="<?php echo $i;?>" id="chk_<?php echo $i;?>">
-                </div>
-                <div class="addr_title">
-                    <label for="ad_subject<?php echo $i;?>" class="sound_only">배송지명</label>
-                    <input type="text" name="ad_subject[<?php echo $i; ?>]" value="<?php echo $row['ad_subject']; ?>" id="ad_subject" class="frm_input" maxlength="20">
-                </div>
-                <div class="addr_default">
-                    <input type="radio" name="ad_default" value="<?php echo $row['ad_id'];?>" id="ad_default<?php echo $i;?>" <?php if($row['ad_default']) echo 'checked="checked"';?>>
-                    <label for="ad_default<?php echo $i;?>">기본배송지 설정</label>
-                </div>
-                <div class="addr_addr"><?php echo print_address($row['ad_addr2'], $row['ad_addr1'], $row['ad_addr3'], ""); ?></div>
-                <div class="addr_name"><?php echo $row['ad_name']; ?></div>
-                <div class="addr_tel"><?php echo $row['ad_tel']; ?> / <?php echo $row['ad_hp']; ?></div>
-                <div class="addr_btn">
-                    <input type="hidden" value="<?php echo $addr; ?>">
-                    <button type="button" id="btn_sel" class="sel_address">선택</button>
-                    <a href="<?php echo $_SERVER['PHP_SELF']; ?>?w=d&amp;ad_id=<?php echo $row['ad_id']; ?>" id="btn_del" class="del_address">삭제</a>
-                </div>
-            </li>
-            <?php
-            }
-            ?>
-        </ul>
+    <h1>When would you like your shopping delivered?</h1>
+
+    <div class="tbl_wrap">
+        <table>
+            <thead>
+            <tr>
+                <td></td>
+
+                <?php
+                for($i=1; $i <= $period; $i++ ) {
+                    $tmp_date = date('Y M d D', strtotime(date('Y-m-d') .' +'.$i.' day'));
+                    $date = explode(' ', $tmp_date);
+                    ?>
+                    <td class="col_header"><?php echo $date[2].' '.$date[1]; ?><br>(<?php echo $date[3]; ?>)</td>
+
+                <?php
+                }
+                ?>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="row_header">10:00 AM<br>~<br>12:00 PM</td>
+                <?php
+                for($i=1; $i <= $period; $i++ ) {
+                    $tmp_date = date('Y M d D', strtotime(date('Y-m-d') .' +'.$i.' day'));
+                    $date = explode(' ', $tmp_date);
+
+                    $key = 'sb_'.strtolower($date[3]);
+                    if ( $delivery_avail[$key] == '1') {
+                        ?>
+                        <td class="row_cell delivery_pick">Click
+                            <?php
+                            $del_date = date('Y-m-d', strtotime(date('Y-m-d') .' +'.$i.' day'));
+                            ?>
+                            <input type="hidden" name="delivery_date" value="<?php echo $del_date; ?>">
+                            <input type="hidden" name="delivery_time" value="10:00~12:00">
+                        </td>
+                    <?php
+                    } else {
+                        ?>
+                        <td class="row_cell_na">N/A</td>
+                    <?php
+                    }
+                    ?>
+                <?php
+                }
+                ?>
+            </tr>
+            <tr>
+                <td class="row_header">01:00 PM<br>~<br>03:00 PM</td>
+                <?php
+                for($i=1; $i <= $period; $i++ ) {
+                    $tmp_date = date('Y M d D', strtotime(date('Y-m-d') .' +'.$i.' day'));
+                    $date = explode(' ', $tmp_date);
+
+                    $key = 'sb_'.strtolower($date[3]);
+                    if ( $delivery_avail[$key] == '1') {
+                        ?>
+                        <td class="row_cell delivery_pick">Click
+                            <?php
+                            $del_date = date('Y-m-d', strtotime(date('Y-m-d') .' +'.$i.' day'));
+                            ?>
+                            <input type="hidden" name="delivery_date" value="<?php echo $del_date; ?>">
+                            <input type="hidden" name="delivery_time" value="13:00~15:00">
+                        </td>
+                    <?php
+                    } else {
+                        ?>
+                        <td class="row_cell_na">N/A</td>
+                    <?php
+                    }
+                    ?>
+                <?php
+                }
+                ?>
+            </tr>
+            </tbody>
+        </table>
     </div>
-
     <div class="win_btn">
-        <input type="submit" name="act_button" value="선택수정" class="btn_submit">
-        <button type="button" onclick="self.close();">닫기</button>
+        <button type="button" onclick="self.close();">Close</button>
     </div>
 </div>
-</form>
-
-<?php echo get_paging($config['cf_mobile_pages'], $page, $total_page, "{$_SERVER['PHP_SELF']}?$qstr&amp;page="); ?>
-
 <script>
-$(function() {
-    $(".sel_address").on("click", function() {
-        var addr = $(this).siblings("input").val().split(String.fromCharCode(30));
+    $(function(){
+        $(".delivery_pick").click(function () {
 
-        var f = window.opener.forderform;
-        f.od_b_name.value        = addr[0];
-//        f.od_b_tel.value         = addr[1];
-        f.od_b_hp.value          = addr[2];
-        f.od_b_zip.value         = addr[3];
-//        f.od_b_addr1.value       = addr[4];
-        f.od_b_addr1.length = 1;
-        f.od_b_addr1.options[0].text = f.od_b_addr1.options[0].value = addr[4];
-        f.od_b_addr1.options[0].disabled = false;
-        f.od_b_addr1.options[0].style.display = "block";
+            var delivery_date = $(this).children("input[name='delivery_date']").val();
+            var delivery_time = $(this).children("input[name='delivery_time']").val();
 
-        f.od_b_addr2.value       = addr[5];
-//        f.od_b_addr3.value       = addr[6];
-        f.od_b_addr_jibeon.value = addr[7];
-        f.ad_subject.value       = addr[8];
+            console.log(delivery_date);
+            console.log(delivery_time);
 
-        var zip = addr[3].replace(/[^0-9]/g, "");
+            var f = window.opener.forderform;
+            f.od_hope_date.value = delivery_date;
+            f.od_hope_time.value = delivery_time;
 
-        if(zip != "") {
-            var code = String(zip);
-
-            if(window.opener.zipcode != code) {
-                window.opener.zipcode = code;
-                window.opener.calculate_sendcost(code);
-            }
-        }
-
-        window.close();
+            window.close();
+        });
     });
 
-    $(".del_address").on("click", function() {
-        return confirm("배송지 목록을 삭제하시겠습니까?");
-    });
-
-    // 전체선택 부분
-    $("#chk_all").on("click", function() {
-        if($(this).is(":checked")) {
-            $("input[name^='chk[']").attr("checked", true);
-        } else {
-            $("input[name^='chk[']").attr("checked", false);
-        }
-    });
-
-    $(".btn_submit").on("click", function() {
-        if($("input[name^='chk[']:checked").length==0 ){
-            alert("수정하실 항목을 하나 이상 선택하세요.");
-            return false;
-        }
-    });
-
-});
 </script>
 
 <?php
