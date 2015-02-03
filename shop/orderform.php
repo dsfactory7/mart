@@ -385,7 +385,7 @@ require_once('./'.$default['de_pg_service'].'/orderform.1.php');
                 <th scope="row">POSTCODE</th>
                 <td id="sod_frm_addr">
                     <label for="od_b_zip" class="sound_only">POSTCODE<strong class="sound_only"> 필수</strong></label>
-                    <input type="text" name="od_b_zip" id="od_b_zip" required class="frm_input required" size="4" maxlength="4" onblur="update_suburb_state(this)"><br>
+                    <input type="text" name="od_b_zip" id="od_b_zip" required class="frm_input required" size="6" maxlength="4" onblur="update_suburb_state(this)"><br>
                 </td>
             </tr>
             <tr>
@@ -410,7 +410,7 @@ require_once('./'.$default['de_pg_service'].'/orderform.1.php');
                 <td>
                     <input type="text" name="od_hope_date" id="od_hope_date" required class="frm_input required" size="12" readonly placeholder="date">
                     <input type="text" name="od_hope_time" id="od_hope_time" required class="frm_input required" size="12" readonly placeholder="time">
-                    <a href="<?php echo G5_SHOP_URL; ?>/delivery_date_picker.php" id="delivery_date_picker" class="btn_frmline">Choose Date/Time</a>
+                    <a href="<?php echo G5_SHOP_URL; ?>/delivery_date_picker.php" id="delivery_date_picker" class="btn_frmline">Choose</a>
                 </td>
             </tr>
             </tbody>
