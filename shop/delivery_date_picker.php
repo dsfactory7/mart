@@ -19,19 +19,15 @@ $delivery_avail = sql_fetch_array($result);
 
 if(!mysql_num_rows($result)) alert_close("The delivery area is not available");
 
-//if (G5_IS_MOBILE) {
-//    include_once(G5_MSHOP_PATH.'/orderaddress.php');
-//    return;
-//}
+if (G5_IS_MOBILE) {
+    include_once(G5_MSHOP_PATH.'/delivery_date_picker.php');
+    return;
+}
 
 $g5['title'] = 'Delivery date picker';
 include_once(G5_PATH.'/head.sub.php');
 
 $period = 7; // TODO: from config
-$period_str = ' +'.$period.' day';
-
-$start_date = date('d M D', strtotime(date('Y-m-d') .' +1 day'));
-$end_date = date('d M D', strtotime(date('Y-m-d') .$period_str));
 
 ?>
 

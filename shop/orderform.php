@@ -1125,7 +1125,6 @@ function update_suburb_state(postcode)
 
 function forderform_check(f)
 {
-    console.log('aaaaaaaaaaa');
     // 재고체크
     var stock_msg = order_stock_check();
     if(stock_msg != "") {
