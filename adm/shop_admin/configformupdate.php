@@ -134,6 +134,7 @@ $sql = " update {$g5['g5_shop_default_table']}
                 de_send_cost_list             = '$de_send_cost_list',
                 de_hope_date_use              = '$de_hope_date_use',
                 de_hope_date_after            = '$de_hope_date_after',
+                de_avail_booking_period       = '$de_avail_booking_period',
                 de_baesong_content            = '$de_baesong_content',
                 de_change_content             = '$de_change_content',
                 de_level_sell                 = '$de_level_sell',

@@ -761,6 +761,13 @@ if(!isset($default['de_pg_service'])) {
             </td>
         </tr>
         <tr>
+            <th scope="row"><label for="de_avail_booking_period">Available Delivery <br> Booking Period</label></th>
+            <td>
+                <?php echo help("Available delivery booking period in delivery date picker"); ?>
+                <input type="text" name="de_avail_booking_period" value="<?php echo $default['de_avail_booking_period']; ?>" id="de_avail_booking_period" class="frm_input" size="5"> day
+            </td>
+        </tr>
+        <tr>
             <th scope="row">배송정보</th>
             <td><?php echo editor_html('de_baesong_content', get_text($default['de_baesong_content'], 0)); ?></td>
         </tr>

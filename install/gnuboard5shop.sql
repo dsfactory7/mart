@@ -279,6 +279,7 @@ CREATE TABLE IF NOT EXISTS `g5_shop_default` (
   `de_send_cost_list` varchar(255) NOT NULL DEFAULT '',
   `de_hope_date_use` int(11) NOT NULL DEFAULT '0',
   `de_hope_date_after` int(11) NOT NULL DEFAULT '0',
+  `de_avail_booking_period` tinyint(2) NOT NULL,
   `de_baesong_content` text NOT NULL,
   `de_change_content` text NOT NULL,
   `de_point_days` int(11) NOT NULL DEFAULT '0',

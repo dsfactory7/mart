@@ -4,7 +4,7 @@ include_once('./_common.php');
 $g5['title'] = 'Delivery date picker';
 include_once(G5_PATH.'/head.sub.php');
 
-$period = 7; // TODO: from config
+$booking_period = $default['de_avail_booking_period'];
 
 ?>
 
@@ -19,7 +19,7 @@ $period = 7; // TODO: from config
                 <td></td>
 
                 <?php
-                for($i=1; $i <= $period; $i++ ) {
+                for($i=1; $i <= $booking_period; $i++ ) {
                     $tmp_date = date('Y M d D', strtotime(date('Y-m-d') .' +'.$i.' day'));
                     $date = explode(' ', $tmp_date);
                     ?>
@@ -34,7 +34,7 @@ $period = 7; // TODO: from config
             <tr>
                 <td class="row_header">10:00 AM<br>~<br>12:00 PM</td>
                 <?php
-                for($i=1; $i <= $period; $i++ ) {
+                for($i=1; $i <= $booking_period; $i++ ) {
                     $tmp_date = date('Y M d D', strtotime(date('Y-m-d') .' +'.$i.' day'));
                     $date = explode(' ', $tmp_date);
 
@@ -62,7 +62,7 @@ $period = 7; // TODO: from config
             <tr>
                 <td class="row_header">01:00 PM<br>~<br>03:00 PM</td>
                 <?php
-                for($i=1; $i <= $period; $i++ ) {
+                for($i=1; $i <= $booking_period; $i++ ) {
                     $tmp_date = date('Y M d D', strtotime(date('Y-m-d') .' +'.$i.' day'));
                     $date = explode(' ', $tmp_date);
 

@@ -305,6 +305,7 @@ if($g5_shop_install) {
                     de_send_cost_list = '4000;3000;2000',
                     de_hope_date_use = '0',
                     de_hope_date_after = '3',
+                    de_avail_booking_period = '7',
                     de_baesong_content = '배송 안내 입력전입니다.',
                     de_change_content = '교환/반품 안내 입력전입니다.',
                     de_rel_list_use = '1',
