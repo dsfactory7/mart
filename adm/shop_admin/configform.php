@@ -452,10 +452,10 @@ if(!isset($default['de_pg_service'])) {
         </colgroup>
         <tbody>
         <tr>
-            <th scope="row"><label for="de_bank_use">Minimum payment</label></th>
+            <th scope="row"><label for="de_bank_use">Minimum order payment (Should order over this amount)</label></th>
             <td>
-                <?php echo help("Set minimum payment"); ?>
-                $ <input type="text" name="de_minimum_payment" value="<?php echo number_format(($default['de_minimum_payment']/100), 2, '.', ','); ?>" id="de_minimum_payment" class="frm_input" size="10">
+                <?php echo help("Set minimum order payment"); ?>
+                $ <input type="text" name="de_minimum_payment" value="<?php echo convert_to_money($default['de_minimum_payment']); ?>" id="de_minimum_payment" class="frm_input" size="10">
             </td>
         </tr>
         <tr>
