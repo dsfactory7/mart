@@ -452,6 +452,13 @@ if(!isset($default['de_pg_service'])) {
         </colgroup>
         <tbody>
         <tr>
+            <th scope="row"><label for="de_bank_use">Minimum payment</label></th>
+            <td>
+                <?php echo help("Set minimum payment"); ?>
+                $ <input type="text" name="de_minimum_payment" value="<?php echo number_format(($default['de_minimum_payment']/100), 2, '.', ','); ?>" id="de_minimum_payment" class="frm_input" size="10">
+            </td>
+        </tr>
+        <tr>
             <th scope="row"><label for="de_bank_use">무통장입금사용</label></th>
             <td>
                 <?php echo help("주문시 무통장으로 입금을 가능하게 할것인지를 설정합니다.\n사용할 경우 은행계좌번호를 반드시 입력하여 주십시오.", 50); ?>

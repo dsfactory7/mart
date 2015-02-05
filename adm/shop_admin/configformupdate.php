@@ -21,6 +21,9 @@ if ($_FILES['mobile_logo_img2']['name']) upload_file($_FILES['mobile_logo_img2']
 
 $de_kcp_mid = substr($_POST['de_kcp_mid'],0,3);
 
+// clear money (get rid of comma and dot)
+$de_minimum_payment = clear_number($de_minimum_payment);
+
 // kcp 전자결제를 사용할 때 site key 입력체크
 if($de_pg_service == 'kcp' && ($de_iche_use || $de_vbank_use || $de_hp_use || $de_card_use)) {
     if(trim($de_kcp_site_key) == '')
@@ -118,6 +121,7 @@ $sql = " update {$g5['g5_shop_default_table']}
                 de_mobile_search_list_mod     = '$de_mobile_search_list_mod',
                 de_mobile_search_img_width    = '$de_mobile_search_img_width',
                 de_mobile_search_img_height   = '$de_mobile_search_img_height',
+                de_minimum_payment            = '$de_minimum_payment',
                 de_bank_use                   = '$de_bank_use',
                 de_bank_account               = '$de_bank_account',
                 de_card_test                  = '$de_card_test',

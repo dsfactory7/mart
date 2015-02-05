@@ -263,6 +263,7 @@ CREATE TABLE IF NOT EXISTS `g5_shop_default` (
   `de_mobile_search_list_mod` int(11) NOT NULL DEFAULT '0',
   `de_mobile_search_img_width` int(11) NOT NULL DEFAULT '0',
   `de_mobile_search_img_height` int(11) NOT NULL DEFAULT '0',
+  `de_minimum_payment` int(11) NOT NULL DEFAULT '0',
   `de_bank_use` int(11) NOT NULL DEFAULT '0',
   `de_bank_account` text NOT NULL,
   `de_card_test` int(11) NOT NULL DEFAULT '0',

@@ -287,6 +287,7 @@ if($g5_shop_install) {
                     de_mobile_type5_list_mod = '3',
                     de_mobile_type5_img_width = '$simg_width',
                     de_mobile_type5_img_height = '$simg_height',
+                    de_minimum_payment = '5000',
                     de_bank_use = '1',
                     de_bank_account = 'OO은행 12345-67-89012 예금주명',
                     de_vbank_use = '0',
