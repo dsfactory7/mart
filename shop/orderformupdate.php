@@ -603,71 +603,108 @@ include_once(G5_SHOP_PATH.'/ordermail2.inc.php');
 
 // SMS BEGIN --------------------------------------------------------
 // 주문고객과 쇼핑몰관리자에게 SMS 전송
-if($config['cf_sms_use'] && ($default['de_sms_use2'] || $default['de_sms_use3'])) {
-    $is_sms_send = false;
+//if($config['cf_sms_use'] && ($default['de_sms_use2'] || $default['de_sms_use3'])) {
 
-    // 충전식일 경우 잔액이 있는지 체크
-    if($config['cf_icode_id'] && $config['cf_icode_pw']) {
-        $userinfo = get_icode_userinfo($config['cf_icode_id'], $config['cf_icode_pw']);
+// 쇼핑몰관리 - 쇼핑몰 설정, 'de_sms_use2' = '주문시 고객님께 발송', 'de_sms_use3' = '주문시 관리자에게 발송'
+if(($default['de_sms_use2'] || $default['de_sms_use3'])) {
 
-        if($userinfo['code'] == 0) {
-            if($userinfo['payment'] == 'C') { // 정액제
-                $is_sms_send = true;
-            } else {
-                $minimum_coin = 100;
-                if(defined('G5_ICODE_COIN'))
-                    $minimum_coin = intval(G5_ICODE_COIN);
+//    $is_sms_send = false;
 
-                if((int)$userinfo['coin'] >= $minimum_coin)
-                    $is_sms_send = true;
-            }
-        }
-    }
+//    // 충전식일 경우 잔액이 있는지 체크
+//    if($config['cf_icode_id'] && $config['cf_icode_pw']) {
+//        $userinfo = get_icode_userinfo($config['cf_icode_id'], $config['cf_icode_pw']);
+//
+//        if($userinfo['code'] == 0) {
+//            if($userinfo['payment'] == 'C') { // 정액제
+//                $is_sms_send = true;
+//            } else {
+//                $minimum_coin = 100;
+//                if(defined('G5_ICODE_COIN'))
+//                    $minimum_coin = intval(G5_ICODE_COIN);
+//
+//                if((int)$userinfo['coin'] >= $minimum_coin)
+//                    $is_sms_send = true;
+//            }
+//        }
+//    }
 
-    if($is_sms_send) {
+//    if($is_sms_send)
+    {
         $sms_contents = array($default['de_sms_cont2'], $default['de_sms_cont3']);
         $recv_numbers = array($od_hp, $default['de_sms_hp']);
         $send_numbers = array($default['de_admin_company_tel'], $od_hp);
 
-        include_once(G5_LIB_PATH.'/icode.sms.lib.php');
+//        include_once(G5_LIB_PATH.'/icode.sms.lib.php');
 
-        $SMS = new SMS; // SMS 연결
-        $SMS->SMS_con($config['cf_icode_server_ip'], $config['cf_icode_id'], $config['cf_icode_pw'], $config['cf_icode_server_port']);
+//        $SMS = new SMS; // SMS 연결
+//        $SMS->SMS_con($config['cf_icode_server_ip'], $config['cf_icode_id'], $config['cf_icode_pw'], $config['cf_icode_server_port']);
         $sms_count = 0;
 
         for($s=0; $s<count($sms_contents); $s++) {
             $sms_content = $sms_contents[$s];
             $recv_number = preg_replace("/[^0-9]/", "", $recv_numbers[$s]);
-            $send_number = preg_replace("/[^0-9]/", "", $send_numbers[$s]);
+//            $send_number = preg_replace("/[^0-9]/", "", $send_numbers[$s]);
 
             $sms_content = str_replace("{이름}", $od_name, $sms_content);
             $sms_content = str_replace("{보낸분}", $od_name, $sms_content);
             $sms_content = str_replace("{받는분}", $od_b_name, $sms_content);
             $sms_content = str_replace("{주문번호}", $od_id, $sms_content);
             $sms_content = str_replace("{주문금액}", number_format($tot_ct_price + $od_send_cost + $od_send_cost2), $sms_content);
+            $sms_content = str_replace("{결제금액}", $i_price, $sms_content);
             $sms_content = str_replace("{회원아이디}", $member['mb_id'], $sms_content);
             $sms_content = str_replace("{회사명}", $default['de_admin_company_name'], $sms_content);
+
+
+            // 무통장 입금 때 계좌정보 보냄
+            if($od_settle_case == '무통장' && $od_misu > 0) {
+                $sms_content = $od_name."님의 입금계좌입니다.\n금액:".number_format($od_misu)."원\n계좌:".$od_bank_account."\n".$default['de_admin_company_name'];
+
+//                $recv_number = preg_replace("/[^0-9]/", "", $od_hp);
+//                $send_number = preg_replace("/[^0-9]/", "", $default['de_admin_company_tel']);
+//                $SMS->Add($recv_number, $send_number, $config['cf_icode_id'], iconv("utf-8", "euc-kr", $sms_content), "");
+//                $sms_count++;
+            }
+
 
             $idx = 'de_sms_use'.($s + 2);
 
             if($default[$idx] && $recv_number) {
-                $SMS->Add($recv_number, $send_number, $config['cf_icode_id'], iconv("utf-8", "euc-kr", stripslashes($sms_content)), "");
-                $sms_count++;
+//                $SMS->Add($recv_number, $send_number, $config['cf_icode_id'], iconv("utf-8", "euc-kr", stripslashes($sms_content)), "");
+//                $sms_count++;
+
+                // SMS 전송을 위해서 'SMS_PENDING_TABLE'에 Insert 한다.
+
+                // 주문서에 입력
+                $sql = " insert {$g5['smsgw_pending_table']}
+                            set mb_id       = '{$member['mb_id']}',
+                            mb_name         = '{$member['mb_name']}',
+                            recv_tel        = '$recv_number',
+                            req_date        = '".G5_TIME_YMDHIS."',
+                            sms_type        = ($s + 2),
+                            sms_msg         = '$sms_content'
+                        ";
+                $result = sql_query($sql, false);
+// when insert is failed,..
+                if( !$result ) {
+                    error_log("Failed to insert 'smsgw_pending' table", 0);
+
+                }
+
             }
         }
 
         // 무통장 입금 때 고객에게 계좌정보 보냄
-        if($od_settle_case == '무통장' && $default['de_sms_use2'] && $od_misu > 0) {
-            $sms_content = $od_name."님의 입금계좌입니다.\n금액:".number_format($od_misu)."원\n계좌:".$od_bank_account."\n".$default['de_admin_company_name'];
+//        if($od_settle_case == '무통장' && $default['de_sms_use2'] && $od_misu > 0) {
+//            $sms_content = $od_name."님의 입금계좌입니다.\n금액:".number_format($od_misu)."원\n계좌:".$od_bank_account."\n".$default['de_admin_company_name'];
+//
+//            $recv_number = preg_replace("/[^0-9]/", "", $od_hp);
+//            $send_number = preg_replace("/[^0-9]/", "", $default['de_admin_company_tel']);
+//            $SMS->Add($recv_number, $send_number, $config['cf_icode_id'], iconv("utf-8", "euc-kr", $sms_content), "");
+//            $sms_count++;
+//        }
 
-            $recv_number = preg_replace("/[^0-9]/", "", $od_hp);
-            $send_number = preg_replace("/[^0-9]/", "", $default['de_admin_company_tel']);
-            $SMS->Add($recv_number, $send_number, $config['cf_icode_id'], iconv("utf-8", "euc-kr", $sms_content), "");
-            $sms_count++;
-        }
-
-        if($sms_count > 0)
-            $SMS->Send();
+//        if($sms_count > 0)
+//            $SMS->Send();
     }
 }
 // SMS END   --------------------------------------------------------

@@ -24,6 +24,10 @@ $g5['sms5_form_table']            = $g5['sms5_prefix'] . 'form';
 $g5['sms5_form_group_table']      = $g5['sms5_prefix'] . 'form_group';
 $g5['sms5_member_history_table']  = $g5['sms5_prefix'] . 'member_history';
 
+// SMSGateway 테이블 명
+$g5['smsgw_pending_table']        = 'smsgw_pending';
+$g5['smsgw_history_table']        = 'smsgw_history';
+
 if (!empty($config['cf_sms_use'])) {
 
     $sms5 = sql_fetch("select * from {$g5['sms5_config_table']} ", false);
