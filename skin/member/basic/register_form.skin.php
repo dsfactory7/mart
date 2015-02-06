@@ -48,7 +48,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
         <tr>
             <th scope="row"><label for="reg_mb_name">Full Name<strong class="sound_only">필수</strong></label></th>
             <td>
-                <input type="text" id="reg_mb_name" name="mb_name" value="<?php echo $member['mb_name'] ?>" <?php echo $required ?> class="frm_input <?php echo $required ?>" size="30">
+                <input type="text" id="reg_mb_name" name="mb_name" value="<?php echo $member['mb_name'] ?>" <?php echo $required ?> class="frm_input <?php echo $required ?>" maxlength="20" size="20">
             </td>
         </tr>
         </tbody>
@@ -322,6 +322,8 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
     // submit 최종 폼체크
     function fregisterform_submit(f)
     {
+        console.log('asdfasdfasd');
+
         // 회원아이디 검사
         if (f.w.value == "") {
             var msg = reg_mb_id_check();
@@ -333,8 +335,8 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
         }
 
         if (f.w.value == "") {
-            if (f.mb_password.value.length < 3) {
-                alert("비밀번호를 3글자 이상 입력하십시오.");
+            if (f.mb_password.value.length < 4) {
+                alert("비밀번호를 4글자 이상 입력하십시오.");
                 f.mb_password.focus();
                 return false;
             }
@@ -347,29 +349,25 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
         }
 
         if (f.mb_password.value.length > 0) {
-            if (f.mb_password_re.value.length < 3) {
-                alert("비밀번호를 3글자 이상 입력하십시오.");
+            if (f.mb_password_re.value.length < 4) {
+                alert("비밀번호를 4글자 이상 입력하십시오.");
                 f.mb_password_re.focus();
                 return false;
             }
         }
 
         // 이름 검사
-        if (f.w.value=="") {
-            if (f.mb_name.value.length < 1) {
-                alert("이름을 입력하십시오.");
-                f.mb_name.focus();
-                return false;
-            }
+        if (f.mb_name.value.length < 1) {
+            alert("Please input name in english characters");
+            f.mb_name.focus();
+            return false;
+        }
 
-            /*
-            var pattern = /([^가-힣\x20])/i;
-            if (pattern.test(f.mb_name.value)) {
-                alert("이름은 한글로 입력하십시오.");
-                f.mb_name.select();
-                return false;
-            }
-            */
+        var pattern = /^[a-zA-Z ]+$/;
+        if (!pattern.test(f.mb_name.value)) {
+            alert("Only allow english characters for name");
+            f.mb_name.select();
+            return false;
         }
 
         // 본인확인 체크

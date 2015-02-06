@@ -45,7 +45,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
         <tr>
             <th scope="row"><label for="reg_mb_name">Full Name<strong class="sound_only">필수</strong></label></th>
             <td>
-                <input type="text" id="reg_mb_name" name="mb_name" value="<?php echo $member['mb_name'] ?>" <?php echo $required ?> class="frm_input <?php echo $required ?>" size="30">
+                <input type="text" id="reg_mb_name" name="mb_name" value="<?php echo $member['mb_name'] ?>" <?php echo $required ?> class="frm_input <?php echo $required ?>" maxlength="20" size="20">
             </td>
         </tr>
         </table>
