@@ -499,7 +499,7 @@ if($od['od_pg'] == 'lg') {
                 </colgroup>
                 <tbody>
                 <tr>
-                    <th scope="row">이 름</th>
+                    <th scope="row">Name</th>
                     <td><?php echo get_text($od['od_b_name']); ?></td>
                 </tr>
 <!--                <tr>-->
@@ -507,23 +507,18 @@ if($od['od_pg'] == 'lg') {
 <!--                    <td>--><?php //echo get_text($od['od_b_tel']); ?><!--</td>-->
 <!--                </tr>-->
                 <tr>
-                    <th scope="row">핸드폰</th>
+                    <th scope="row">Phone</th>
                     <td><?php echo get_text($od['od_b_hp']); ?></td>
                 </tr>
                 <tr>
-                    <th scope="row">주 소</th>
+                    <th scope="row">Address</th>
                     <td><?php echo get_text(print_address($od['od_b_addr2'], $od['od_b_addr1'], $od['od_b_zip'], "")); ?></td>
                 </tr>
-                <?php
-                // 희망배송일을 사용한다면
-                if ($default['de_hope_date_use'])
-                {
-                ?>
                 <tr>
-                    <th scope="row">희망배송일</th>
-                    <td><?php echo substr($od['od_hope_date'],0,10).' ('.get_yoil($od['od_hope_date']).')' ;?></td>
+                    <th scope="row">Delivery Time</th>
+                    <td><?php echo $od['od_hope_date'].' '.$od['od_hope_time'] ;?></td>
                 </tr>
-                <?php }
+                <?php
                 if ($od['od_memo'])
                 {
                 ?>

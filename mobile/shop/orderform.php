@@ -368,7 +368,6 @@ require_once(G5_MSHOP_PATH.'/'.$default['de_pg_service'].'/orderform.1.php');
                 <th scope="row">ADDRESS</th>
                 <td id="sod_frm_addr">
                     <select name="od_b_addr1" id="od_b_addr1" required class="frm_suburb_select frm_address required" style="color: #A9A9A9;">
-                        <option value="" disabled selected style='display:none;'>Suburb and state</option>
                     </select><br>
                     <input type="text" name="od_b_addr2" id="od_b_addr2" required class="frm_input frm_address required" style="min-width: 200px" placeholder="Street Address">
                 </td>
@@ -378,8 +377,12 @@ require_once(G5_MSHOP_PATH.'/'.$default['de_pg_service'].'/orderform.1.php');
                 <td><textarea name="od_memo" id="od_memo"></textarea></td>
             </tr>
             <tr>
-              <th scope="row"><label for="od_hope_date">Delivery Date</label></th>
-              <td><input type="text" name="od_hope_date" id="od_hope_date" required class="frm_input required" size="30"></td>
+                <th scope="row">Delivery Date/Time</th>
+                <td>
+                    <input type="text" name="od_hope_date" id="od_hope_date" required class="frm_input required" size="12" readonly placeholder="date">
+                    <input type="text" name="od_hope_time" id="od_hope_time" required class="frm_input required" size="12" readonly placeholder="time">
+                    <a href="<?php echo G5_SHOP_URL; ?>/delivery_date_picker.php" id="delivery_date_picker" class="btn_frmline">Choose</a>
+                </td>
             </tr>
             </tbody>
             </table>
@@ -877,13 +880,13 @@ $(function() {
             f.od_b_addr1.length = 1;
             f.od_b_addr1.options[0].text = f.od_b_addr1.options[0].value = addr[4];
             f.od_b_addr1.options[0].disabled = false;
-            f.od_b_addr1.options[0].style.display = "block";
 
             f.od_b_addr2.value       = addr[5];
 //            f.od_b_addr3.value       = addr[6];
 //            f.od_b_addr_jibeon.value = addr[7];
             f.ad_subject.value       = addr[8];
             f.od_hope_date.value     = "";
+            f.od_hope_time.value     = "";
 
             var zip = addr[3].replace(/[^0-9]/g, "");
 
@@ -902,6 +905,17 @@ $(function() {
     $("#order_address").on("click", function() {
         var url = this.href;
         window.open(url, "win_address", "left=100,top=100,width=650,height=500,scrollbars=1");
+        return false;
+    });
+
+    // pick Delivery Date
+    $("#delivery_date_picker").on("click", function() {
+
+        // check postcode first
+
+        var f = document.forderform;
+        var url = this.href+"?postcode="+f.od_b_zip.value;
+        window.open(url, "delivery date picker", "left=100,top=100,width=500,height=400");
         return false;
     });
 });
@@ -1140,12 +1154,7 @@ function update_suburb_state(postcode)
     var suburb = document.getElementById("od_b_addr1");
 
     if (postcode.value.length != 4) {
-        suburb.style.color = "gray";
-        suburb.length = 1;
-        suburb.options[0].text = "Suburb and state";
-        suburb.options[0].diabled = true;
-        suburb.options[0].selected = true;
-        suburb.options[0].style.display = "none";
+        suburb.length = 0;
         return;
     }
 
@@ -1163,8 +1172,6 @@ function update_suburb_state(postcode)
     suburb.length = data.list.length;
     for (i=0; i < data.list.length; i++) {
         suburb.options[i].text = suburb.options[i].value = data.list[i];
-        suburb.options[i].disabled = false;
-        suburb.options[i].style.display = "block";
     }
 
 }
@@ -1217,18 +1224,20 @@ function orderfield_check(f)
 //    if(f.od_email.value=='' || f.od_email.value.search(/(\S+)@(\S+)\.(\S+)/) == -1)
 //        error_field(f.od_email, "E-mail을 바르게 입력해 주십시오.");
 
-    if (typeof(f.od_hope_date) != "undefined")
-    {
-        clear_field(f.od_hope_date);
-        if (!f.od_hope_date.value)
-            error_field(f.od_hope_date, "희망배송일을 선택하여 주십시오.");
-    }
+//    if (typeof(f.od_hope_date) != "undefined")
+//    {
+//        clear_field(f.od_hope_date);
+//        if (!f.od_hope_date.value)
+//            error_field(f.od_hope_date, "희망배송일을 선택하여 주십시오.");
+//    }
 
     check_field(f.od_b_name, "받으시는 분 이름을 입력하십시오.");
     check_field(f.od_b_hp, "받으시는 분 핸드폰 번호를 입력하십시오.");
     check_field(f.od_b_addr1, "받으시는 분 주소를 입력하십시오.");
     check_field(f.od_b_addr2, "받으시는 분의 상세주소를 입력하십시오.");
     check_field(f.od_b_zip, "");
+    check_field(f.od_hope_date, "Please choose the delivery date");
+    check_field(f.od_hope_time, "Please choose the delivery time");
 
     var od_settle_bank = document.getElementById("od_settle_bank");
     if (od_settle_bank) {

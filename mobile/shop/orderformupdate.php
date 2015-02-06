@@ -479,6 +479,7 @@ $sql = " insert {$g5['g5_shop_order_table']}
                 od_status         = '$od_status',
                 od_shop_memo      = '',
                 od_hope_date      = '$od_hope_date',
+                od_hope_time      = '$od_hope_time',
                 od_time           = '".G5_TIME_YMDHIS."',
                 od_mobile         = '1',
                 od_ip             = '$REMOTE_ADDR',

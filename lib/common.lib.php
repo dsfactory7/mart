@@ -321,6 +321,17 @@ function get_dirsize($dir)
     return $size;
 }
 
+// convert number to money format (ex. $ 1,222.00)
+function convert_to_money($n) {
+    $n = number_format( ($n/100), 2, '.', ',');
+    return $n;
+}
+
+// remove comma and dot from number
+function clear_number($n) {
+    $n = preg_replace('/[^0-9]/s', '', $n);
+    return $n;
+}
 
 /*************************************************************************
 **

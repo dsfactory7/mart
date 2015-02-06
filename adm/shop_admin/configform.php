@@ -452,6 +452,13 @@ if(!isset($default['de_pg_service'])) {
         </colgroup>
         <tbody>
         <tr>
+            <th scope="row"><label for="de_bank_use">Minimum order payment (Should order over this amount)</label></th>
+            <td>
+                <?php echo help("Set minimum order payment"); ?>
+                $ <input type="text" name="de_minimum_payment" value="<?php echo convert_to_money($default['de_minimum_payment']); ?>" id="de_minimum_payment" class="frm_input" size="10">
+            </td>
+        </tr>
+        <tr>
             <th scope="row"><label for="de_bank_use">무통장입금사용</label></th>
             <td>
                 <?php echo help("주문시 무통장으로 입금을 가능하게 할것인지를 설정합니다.\n사용할 경우 은행계좌번호를 반드시 입력하여 주십시오.", 50); ?>
@@ -758,6 +765,13 @@ if(!isset($default['de_pg_service'])) {
             <td>
                 <?php echo help("오늘을 포함하여 설정한 날 이후부터 일주일 동안을 달력 형식으로 노출하여 선택할수 있도록 합니다."); ?>
                 <input type="text" name="de_hope_date_after" value="<?php echo $default['de_hope_date_after']; ?>" id="de_hope_date_after" class="frm_input" size="5"> 일
+            </td>
+        </tr>
+        <tr>
+            <th scope="row"><label for="de_avail_booking_period">Available Delivery <br> Booking Period</label></th>
+            <td>
+                <?php echo help("Available delivery booking period in delivery date picker"); ?>
+                <input type="text" name="de_avail_booking_period" value="<?php echo $default['de_avail_booking_period']; ?>" id="de_avail_booking_period" class="frm_input" size="5"> day
             </td>
         </tr>
         <tr>
