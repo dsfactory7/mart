@@ -270,20 +270,20 @@ require_once('./'.$default['de_pg_service'].'/orderform.1.php');
     <!-- 주문상품 합계 시작 { -->
     <dl id="sod_bsk_tot">
         <dt class="sod_bsk_sell">주문</dt>
-        <dd class="sod_bsk_sell"><strong><?php echo number_format($tot_sell_price); ?> 원</strong></dd>
+        <dd class="sod_bsk_sell"><strong> $ <?php echo convert_to_money($tot_sell_price); ?></strong></dd>
         <?php if($it_cp_count > 0) { ?>
         <dt class="sod_bsk_coupon">쿠폰할인</dt>
-        <dd class="sod_bsk_coupon"><strong id="ct_tot_coupon">0 원</strong></dd>
+        <dd class="sod_bsk_coupon">$ <strong id="ct_tot_coupon">0</strong></dd>
         <?php } ?>
         <dt class="sod_bsk_dvr">배송비</dt>
-        <dd class="sod_bsk_dvr"><strong><?php echo number_format($send_cost); ?> 원</strong></dd>
+        <dd class="sod_bsk_dvr"><strong>$ <?php echo convert_to_money($send_cost); ?></strong></dd>
         <dt class="sod_bsk_cnt">총계</dt>
         <dd class="sod_bsk_cnt">
             <?php $tot_price = $tot_sell_price + $send_cost; // 총계 = 주문상품금액합계 + 배송비 ?>
-            <strong id="ct_tot_price"><?php echo number_format($tot_price); ?> 원</strong>
+            <strong id="ct_tot_price">$ <?php echo convert_to_money($tot_price); ?></strong>
         </dd>
         <dt class="sod_bsk_point">포인트</dt>
-        <dd class="sod_bsk_point"><strong><?php echo number_format($tot_point); ?> 점</strong></dd>
+        <dd class="sod_bsk_point"><strong>P <?php echo convert_to_money($tot_point); ?></strong></dd>
     </dl>
     <!-- } 주문상품 합계 끝 -->
 
@@ -298,6 +298,26 @@ require_once('./'.$default['de_pg_service'].'/orderform.1.php');
     <?php
     // 결제대행사별 코드 include (결제대행사 정보 필드)
     require_once('./'.$default['de_pg_service'].'/orderform.2.php');
+    ?>
+
+    <!-- check minimum order payment -->
+    <?php
+        if ($tot_sell_price < $default['de_minimum_payment'] ) {
+    ?>
+    <p class="display_minimum_order_message">
+        <strong>Minimum order payment</strong>
+        You should order minimum $<?php echo convert_to_money($default['de_minimum_payment']); ?>. Your order is $<?php echo convert_to_money($tot_sell_price); ?>
+    </p>
+
+</div>
+</form>
+<div class="btn_confirm">
+    <a href="javascript:history.go(-1);" class="btn01">Back</a>
+</div>
+    <?php
+            include_once('./_tail.php');
+            die();
+        }
     ?>
 
     <!-- 받으시는 분 입력 시작 { -->
